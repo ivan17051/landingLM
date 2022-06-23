@@ -14,8 +14,16 @@ use App\Http\Controllers\LandingController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Auth::routes();
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/login', [LandingController::class, 'login']);
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', function(){
+        return view('dashboard');
+    });
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

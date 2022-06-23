@@ -24,7 +24,8 @@ Author URL: http://w3layouts.com
   <section class="w3l-bootstrap-header">
     <nav class="navbar navbar-expand-lg navbar-light py-lg-3 py-2">
       <div class="container">
-        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg1.png')}}" style="height:35px;" alt=""></a>
+        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg2.png')}}" style="height:40px;" alt=""></a>
+        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg1.png')}}" style="height:35px;margin-left:-20px;" alt=""></a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +60,7 @@ Author URL: http://w3layouts.com
   <!-- grids block 5 -->
   <section class="w3l-footer-29-main" id="footer">
     <div class="footer-29">
-      <div class="grids-forms-1 pb-5">
+      <!-- <div class="grids-forms-1 pb-5">
         <div class="container">
           <div class="grids-forms">
             <div class="main-midd">
@@ -74,7 +75,7 @@ Author URL: http://w3layouts.com
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="container pt-5">
 
         <div class="d-grid grid-col-4 footer-top-29">
@@ -128,7 +129,7 @@ Author URL: http://w3layouts.com
           </div>
         </div>
         <div class="bottom-copies text-center">
-          <p class="copy-footer-29">© 2020 Companies. All rights reserved | Designed by <a
+          <p class="copy-footer-29">© 2022 Lead Me Vitara. All rights reserved | Designed by <a
               href="https://w3layouts.com">W3layouts</a></p>
 
         </div>
