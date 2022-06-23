@@ -10742,7 +10742,7 @@ button.owl-next {
   -ms-transition: 0.3s ease-in; }
 
 .w3l-main-slider .banner-view {
-  background: url(../images/1.jpg) no-repeat center;
+  background: url(https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center;
   background-size: cover;
   min-height: calc(100vh - 50px);
   position: relative;
@@ -10751,7 +10751,7 @@ button.owl-next {
   align-items: center; }
 
 .w3l-main-slider .banner-top1 {
-  background: url(../images/2.jpg) no-repeat center;
+  background: url(https://images.pexels.com/photos/3062542/pexels-photo-3062542.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center;
   background-size: cover; }
 
 .w3l-main-slider .banner-top2 {

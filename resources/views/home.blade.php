@@ -15,7 +15,7 @@
                     <h5> We are industry Factory solutions</h5>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, velit recusandae eum
                       necessitatibus blanditiis porro cum</p>
-                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="services.html"> Our Services</a>
+                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="services.html"> Pesan Sekarang</a>
                   </div>
                 </div>
               </div>
@@ -38,38 +38,7 @@
             </div>
           </li>
         </div>
-        <div class="item">
-          <li>
-            <div class="slider-info banner-view banner-top2 bg bg2" data-selector=".bg.bg2">
-              <div class="banner-info">
-                <div class="container">
-                  <div class="banner-info-bg mr-auto">
-                    <h5>A company involved in service, maintenance</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, velit recusandae eum
-                      necessitatibus blanditiis porro cum</p>
-                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="about.html"> About Us</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </div>
-        <div class="item">
-          <li>
-            <div class="slider-info banner-view banner-top3 bg bg2" data-selector=".bg.bg2">
-              <div class="banner-info">
-                <div class="container">
-                  <div class="banner-info-bg mr-auto">
-                    <h5>We're thriving and building better products</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, velit recusandae eum
-                      necessitatibus blanditiis porro cum</p>
-                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="services.html">Read More</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </div>
+        
       </div>
     </div>
 

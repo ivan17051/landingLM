@@ -24,7 +24,7 @@ Author URL: http://w3layouts.com
   <section class="w3l-bootstrap-header">
     <nav class="navbar navbar-expand-lg navbar-light py-lg-3 py-2">
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img src="{{asset('assets/images/lg1.png')}}" style="height:35px;" alt=""></a>
+        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg1.png')}}" style="height:35px;" alt=""></a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,25 +34,21 @@ Author URL: http://w3layouts.com
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="{{url('/')}}">Beranda</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="{{url('/aboutus')}}">Tentang Kami</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="services.html">Services</a>
+              <a class="nav-link" href="{{url('/lokasi')}}">Lokasi</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="{{url('/kontak')}}">Kontak</a>
             </li>
           </ul>
-          <form action="#" class="form-inline position-relative my-2 my-lg-0">
-            <input class="form-control search" type="search" placeholder="Search here..." aria-label="Search"
-              required="">
-            <button class="btn btn-search position-absolute" type="submit"><span class="fa fa-search"
-                aria-hidden="true"></span></button>
-          </form>
+
+          <a href="{{url('/login')}}" class="btn btn-outline-secondary">Login</a>
         </div>
       </div>
     </nav>
@@ -88,7 +84,7 @@ Author URL: http://w3layouts.com
               <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</p>
             </ul>
             <div class="main-social-footer-29">
-              <h6 class="footer-title-29">Social Links</h6>
+              <h6 class="footer-title-29">Media Sosial</h6>
               <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
               <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
               <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
@@ -107,7 +103,7 @@ Author URL: http://w3layouts.com
             </ul>
           </div>
           <div class="footer-list-29 footer-3">
-            <div class="properties">
+            <!-- <div class="properties">
               <h6 class="footer-title-29">Recent Projects</h6>
               <a href="#"><img src="assets/images/g2.jpg" class="img-responsive" alt="">
                 <p>We Are Leading International Consultiing Agency</p>
@@ -118,7 +114,7 @@ Author URL: http://w3layouts.com
               <a href="#"><img src="assets/images/g6.jpg" class="img-responsive" alt="">
                 <p>Doloremque velit sapien labore eius itna</p>
               </a>
-            </div>
+            </div> -->
           </div>
           <div class="footer-list-29 footer-4">
             <ul>
