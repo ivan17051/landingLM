@@ -9,20 +9,21 @@ Author URL: http://w3layouts.com
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <link rel="icon" type="image/png" href="{{asset('assets/images/lg3.png')}}">
   <title>Lead Me | Home</title>
   <!-- web fonts -->
   <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('assets/fonts/icofont/css/icofont.min.css')}}">
   <!-- //web fonts -->
   <!-- Template CSS -->
-  <link rel="stylesheet" href="{{asset('assets/css/style-starter.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/style-starter.css?version=$FILE_TIME')}}">
 </head>
 
 <body>
 
-  <section class="w3l-bootstrap-header">
-    <nav class="navbar navbar-expand-lg navbar-light py-lg-3 py-2">
+  <section class="w3l-bootstrap-header"  >
+    <nav class=" navbar navbar-expand-lg navbar-light py-lg-3 py-2 " style="position: fixed;">
       <div class="container">
         <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg2.png')}}" style="height:40px;" alt=""></a>
         <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg1.png')}}" style="height:35px;margin-left:-20px;" alt=""></a>
@@ -35,21 +36,32 @@ Author URL: http://w3layouts.com
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/')}}">Beranda</a>
+              <a class="nav-link" href="{{url('/')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/aboutus')}}">Tentang Kami</a>
+              <a class="nav-link" href="{{url('/aboutus')}}">Sinopsis</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/lokasi')}}">Lokasi</a>
+              <a class="nav-link" href="{{url('/lokasi')}}">Jadwal Penayangan</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('/kontak')}}">Merchandise</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('/kontak')}}">Dibalik Layar</a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="{{url('/kontak')}}">Kontak</a>
             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="{{url('/kontak')}}">Akun</a>
+            </li>
           </ul>
 
-          <a href="{{url('/login')}}" class="btn btn-outline-secondary">Login</a>
+          <a href="{{url('/login')}}" class="btn btn-theme2">Login</a>
         </div>
       </div>
     </nav>

@@ -82,117 +82,108 @@
     <!-- //script -->
     <!-- /main-slider -->
   </section>
-  <section class="w3l-features-1">
+<section class="w3l-features-1">
     <!-- /features -->
     <div class="features py-5">
-      <div class="container">
-
-        <div class="fea-gd-vv row ">
-          <div class="col-lg-3 col-sm-6">
-            <div class="float-lt feature-gd">
-              <div class="icon"> <span class="fa fa-microchip" aria-hidden="true"></span></div>
-              <div class="icon-info">
-                <h5>Best engineering</h5>
-                <p class="mt-2">Lorem ipsum dolor sit amet, consectetur </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 mt-sm-0 mt-4">
-            <div class="float-mid feature-gd">
-              <div class="icon"> <span class="fa fa-flask" aria-hidden="true"></span></div>
-              <div class="icon-info">
-                <h5>Chemical research</h5>
-                <p class="mt-2">Lorem ipsum dolor sit amet, consectetur </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 mt-lg-0 mt-4">
-            <div class="float-rt feature-gd">
-              <div class="icon"> <span class="fa fa-fire" aria-hidden="true"></span></div>
-              <div class="icon-info">
-                <h5>Rapid delivery</h5>
-                <p class="mt-2">Lorem ipsum dolor sit amet, consectetur </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 mt-lg-0 mt-4">
-            <div class="float-lt feature-gd">
-              <div class="icon"> <span class="fa fa-cog" aria-hidden="true"></span></div>
-              <div class="icon-info">
-                <h5>Call center</h5>
-                <p class="mt-2">Lorem ipsum dolor sit amet, consectetur </p>
-              </div>
-            </div>
-          </div>
+        <div class="row text-center" style="margin-left: 100px; margin-right: 100px;">
+          <div class="col-1"> <h5 class="text-center text-white">Sponsor LeadMe</h5></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
+          <div class="col-1"><img style="width: 100%;" src="{{asset('assets/images/lg1.png')}}"></div>
         </div>
-      </div>
+        
     </div>
     <!-- //features -->
   </section>
-  <!--  About section -->
+  
   <div class="w3l-about1 py-5" id="about">
     <div class="container py-lg-3">
 
       <div class="aboutgrids row">
         <div class="col-lg-6 aboutgrid2">
-          <img src="assets/images/index-1.jpg" alt="about image" class="img-fluid" />
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/vfsAk9avjK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-lg-6 aboutgrid1 mt-lg-0 mt-4 pl-lg-5">
-          <h4>How we can help you?</h4>
+          <h4>About LeadMe</h4>
+          <h6>Durasi : 180 Menit</h6>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, velit recusandae eum necessitatibus
             blanditiis porro cum, facere qui impedit dolor doloribus quis reiciendis ullam repellendus.Lorem ipsum dolor
             sit amet consectetur adipisicing elit. Quae, velit recusandae eum </p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, velit recusandae eum necessitatibus
-            blanditiis porro cum, facere qui impedit dolor doloribus quis reiciendis ullam repellendus.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, velit recusandae eum necessitatibus
+            blanditiis porro cum, facere qui impedit dolor doloribus quis reiciendis ullam repellendus.Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Quae, velit recusandae eum </p>
+          <table>
+            <!-- logo OMK 7 Paroki Link Ke ig masing2 + 1 logo vitara  -->
+            <tr><td style="padding: 5px;"><img style="width: 100%;" src="{{asset('assets/images/lg2.png')}}"></td>
+            <td style="padding: 5px;"><img style="width: 100%;" src="{{asset('assets/images/lg2.png')}}"></td>
+            <td style="padding: 5px;"><img style="width: 100%;" src="{{asset('assets/images/lg2.png')}}"></td>
+            <td style="padding: 5px;"><img style="width: 100%;" src="{{asset('assets/images/lg2.png')}}"></td>
+            <td style="padding: 5px;"><img style="width: 100%;" src="{{asset('assets/images/lg2.png')}}"></td>
+            <td style="padding: 5px;"><img style="width: 100%;" src="{{asset('assets/images/lg2.png')}}"></td>
+            <td style="padding: 5px;"><img style="width: 100%;" src="{{asset('assets/images/lg2.png')}}"></td>
+           <td style="padding: 5px;"><img style="width: 100%;" src="{{asset('assets/images/lg2.png')}}"></td></tr>
+          </table>
 
-          <a class="btn btn-secondary btn-theme2" href="about.html"> About Us</a>
         </div>
       </div>
     </div>
   </div>
-  <!--  //About section -->
+  
   <section class="w3l-services2" id="stats">
     <div class="features-with-17_sur py-5">
       <div class="container py-md-3">
 
-        <div class="row pt-lg-5 mt-lg-3">
-          <div class="col-lg-4 features-with-17-left_sur">
-            <h4 class="lft-head">We're thriving and building better products</h4>
-            <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla mollis
-              dapibus nunc, ut rhoncus turpis sodales quis.</p>
+         <div class="row  text-center ">
+            <h4 class="text-center  lft-head">LeadMe Dalam Angka</h4>
           </div>
-          <div class="col-lg-8 my-lg-0 my-5 align-self-center features-with-17-right_sur">
-            <div class="features-with-17-right-tp_sur text-center">
+        <div class="row pt-lg-5 mt-lg-3">
+         
+            <div class="col-lg-3 col-md-6 features-with-17-right-tp_sur text-center">
               <div class="features-with-17-left1">
                 <span class="fa fa-user s4"></span>
               </div>
               <div class="features-with-17-left2">
-                <h6>1100</h6>
-                <p>HAPPY CLIENT</p>
+                <h6>80</h6>
+                <h5 class="text-white">Crew Dan Cast</h5>
               </div>
             </div>
-            <div class="features-with-17-right-tp_sur text-center">
+            <div class="col-lg-3 col-md-6 features-with-17-right-tp_sur text-center" >
               <div class="features-with-17-left1">
-                <span class="fa fa-handshake-o s5"></span>
+                <span class="fa fa-film s5"></span>
               </div>
               <div class="features-with-17-left2">
-                <h6>1208</h6>
-                <p>WORKERS HAND</p>
+                <h6>134</h6>
+                <h5 class="text-white">Penayangan</h5>
               </div>
             </div>
-            <div class="features-with-17-right-tp_sur text-center">
+            <div class="col-lg-3 col-md-6 features-with-17-right-tp_sur text-center" >
+              <div class="features-with-17-left1">
+                <span class="fa fa-users s3"></span>
+              </div>
+              <div class="features-with-17-left2">
+                <h6>10000</h6>
+                <h5 class="text-white">Orang Telah<br>Menonton LeadMe</h5>
+              </div>
+            </div>
+             <div class="col-lg-3 col-md-6 features-with-17-right-tp_sur text-center">
               <div class="features-with-17-left1">
                 <span class="fa fa-lock s3"></span>
               </div>
               <div class="features-with-17-left2">
-                <h6>1250</h6>
-                <p>ACTIVE EXPERTS</p>
+                <h6>10000</h6>
+                <h5 class="text-white">Penonton</h5>
               </div>
             </div>
 
-
-
-          </div>
+         
         </div>
       </div>
     </div>
@@ -203,89 +194,80 @@
       <div class="container py-md-3">
 
         <div class="heading text-center mx-auto">
-          <h3 class="head">Industries Served</h3>
-          <p class="my-3 head"> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-            Nulla mollis dapibus nunc, ut rhoncus
-            turpis sodales quis. Integer sit amet mattis quam.</p>
-
+          <h3 class="head">Jadwal Penayangan</h3>
+          <p class="my-3 head">Lorem Ipsum...</p>
         </div>
-        <div class="fea-gd-vv text-center row mt-5 pt-3">
+        <div>
+          //search bar
+          <input type="text" name="">
+        </div>
+        <div>
+          <div class="row">
+              <h4>Minggu 10 Oktober 2023</h4>
+          </div><br>
+          <div class="row">
+            <div class="card col-lg-12 col-sm-12">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-lg-3 col-sm-12">
+                    <img style="height: 100%" class="card-img" src="{{asset('assets/images/g10.jpg')}}">
+                  </div>
+                 <div class="col-lg-9 col-sm-12">
+                    <img style="width: 50px; margin-top: 5px;" class="card-img" src="{{asset('assets/images/lg2.png')}}">
+                    <h5 class="card-title">THE RPD THEATER | OMK RPD</h5>
+                    <h6>Halaman Pasturan Paroki Ratu Pencinta Damai Surabaya <br>Jalan Pogot Baru 77-79 Surabaya</h6>
+                    <br>
+                  <p class="card-text">Suasana Menonton Outdoor Ditemani Cahaya Bintang Dengan Layar Raksasa 50M^2</p>
+                  <br>
+                  <div class="row" style="margin-left: 0px;">
+                      <button style="margin:5px;"class="btn btn-info" type="button" data-toggle="collapse" data-target="#c1" aria-expanded="false" aria-controls="c1">Cek Tiket</button>
+                      <a style="margin:5px;"type="button" data-toggle="collapse" data-target="#c2" aria-expanded="false" aria-controls="c2" class="btn btn-dark">Peta Lokasi</a>
+                  </div>
+                  
+                 </div>
+                </div>
+                
+              </div>
 
-          <div class="col-lg-4 col-md-6">
-            <div class="float-top">
-              <a href="services.html"><img src="assets/images/g1.jpg" class="img-responsive" alt=""></a>
-              <div class="float-lt feature-gd">
-                <h3><a href="services.html">Metallurgical Engineering</a> </h3>
-                <p> Consectetur adipisicingelit, sed do eiusmod tempor incididunt ut labore et.dolor sit amet </p>
-                <a class="btn btn-secondary btn-theme4 mt-4" href="services.html"> More Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-            <div class="float-top">
-              <a href="services.html"><img src="assets/images/g2.jpg" class="img-responsive" alt=""></a>
-              <div class="float-lt feature-gd">
-                <h3><a href="services.html">Metal Working Tools</a> </h3>
-                <p> Consectetur adipisicingelit, sed do eiusmod tempor incididunt ut labore et.dolor sit amet </p>
-                <a class="btn btn-secondary btn-theme4 mt-4" href="services.html"> More Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
-            <div class="float-top-1 text-left pl-4 pr-4 py-5">
-              <h4 class="">Jobs</h4>
-              <p class="mt-2"> Consectetur adipisicingelit, sed do eiusmod tempor incididunt ut labore et.dolor sit amet
-              </p>
-              <div class="top-right mt-4 pt-2">
-                <div class="icon-left pt-1">
-                  <span class="fa fa-arrow-right"></span>
-                </div>
-                <div class="icon-text-left">
-                  <h3 class=""><a href="services.html">Metal Working Tools</a> </h3>
-                  <p class="mt-2"> Consectetur adipisicingelit, sed do eiusmod tempor incididunt ut labore et.dolor sit
-                    amet </p>
-                </div>
-              </div>
-              <div class="top-right mt-3">
-                <div class="icon-left pt-1">
-                  <span class="fa fa-arrow-right"></span>
-                </div>
-                <div class="icon-text-left">
-                  <h3 class=""><a href="services.html">Metal Working Tools</a> </h3>
-                  <p class="mt-2"> Consectetur adipisicingelit, sed do eiusmod tempor incididunt ut labore et.dolor sit
-                    amet </p>
+              <div class="collapse" id="c1">
+                <div class="row" style="margin: 5px;">
+                  <div class="col-lg-3 col-md-12 col-sm-12 card card-body" >
+                    <div>
+                      <h5>Minggu 1 Oktober 2023</h5>
+                      <h5>TIKET BRONZE</h5><br>
+                      <h6>- Tiket Menonton Leadme</h6><br>
+                      <h4>Rp.15.000</h4><br>
+                      <h6> Jumlah Tiket</h6>
+                      <input style="width:80%; margin-bottom: 5px;" type="number" min="0" value="0" name=""> / 50
+                      <input style="width:100%;"  type="submit" class="btn btn-success" name="" value="BELI">
+                    </div> 
+                  </div>
+                  <div class="col-lg-3 col-md-12 col-sm-12 card card-body">
+                    <div>
+                      <h5>Minggu 1 Oktober 2023</h5>
+                      <h5>TIKET SILVER</h5><br>
+                      <h6>- Tiket Menonton Leadme <br>- Snack</h6><br>
+                      <h4>Rp.25.000</h4><br>
+                      <h6> Jumlah Tiket</h6>
+                      <input style="width:80%; margin-bottom: 5px;" type="number" min="0" value="0" name=""> / 0
+                      <input style="width:100%" type="submit" class="btn btn-danger" name="" value="HABIS">
+                    </div> 
+                  </div>
+                  <div class="col-lg-3 col-md-12 col-sm-12 card card-body">
+                    <div>
+                      <h5>Minggu 1 Oktober 2023</h5>
+                      <h5>TIKET VIP</h5><br>
+                      <h6> - Tiket Menonton Leadme <br> - Snack <br> - Meet And Great <br> - Parkir Khusus</h6><br>
+                      <h4>Rp.50.000</h4><br>
+                      <h6> Jumlah Tiket</h6>
+                      <input style="width:80%; margin-bottom: 5px;" type="number" min="0" value="0" name=""> / 10
+                      <input style="width:100%" type="submit" class="btn btn-warning" name="" value="BELUM DIJUAL">
+                    </div> 
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-5">
-            <div class="float-top">
-              <a href="services.html"><img src="assets/images/g3.jpg" class="img-responsive" alt=""></a>
-              <div class="float-lt feature-gd">
-                <h3><a href="services.html">Grinding & Lapping</a> </h3>
-                <p> Consectetur adipisicingelit, sed do eiusmod tempor incididunt ut labore et.dolor sit amet </p>
-                <a class="btn btn-secondary btn-theme4 mt-4" href="services.html"> More Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-5">
-            <div class="float-top">
-              <a href="services.html"><img src="assets/images/g7.jpg" class="img-responsive" alt=""></a>
-              <div class="float-lt feature-gd">
-                <h3><a href="services.html">Precision Metal Cutting</a> </h3>
-                <p> Consectetur adipisicingelit, sed do eiusmod tempor incididunt ut labore et.dolor sit amet </p>
-                <a class="btn btn-secondary btn-theme4 mt-4" href="services.html"> More Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-5">
-            <div class="float-top">
-              <a href="services.html"><img src="assets/images/g6.jpg" class="img-responsive" alt=""></a>
-              <div class="float-lt feature-gd">
-                <h3><a href="services.html">Automotive Industry Line</a> </h3>
-                <p> Consectetur adipisicingelit, sed do eiusmod tempor incididunt ut labore et.dolor sit amet </p>
-                <a class="btn btn-secondary btn-theme4 mt-4" href="services.html"> More Details</a>
-              </div>
+
+             
             </div>
           </div>
         </div>
@@ -317,8 +299,8 @@
                       <img src="assets/images/c1.jpg" class="img-responsive" alt="" />
                     </div>
                     <h6 class="mt-3">Steve Smith</h6>
-                    <p class="">Client</p>
-                    <h5>" Magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor " </h5>
+                    <p class="">Romo Paroki St Marinus Yohanes Surabaya</p>
+                    <h5>"Film Leadme Sangat Menarik Jangan Lupa Ditonton" </h5>
 
                   </div>
                 </div>
@@ -334,8 +316,8 @@
                       <img src="assets/images/c2.jpg" class="img-responsive" alt="" />
                     </div>
                     <h6 class="mt-3">Jessey Rider</h6>
-                    <p class="">Worker</p>
-                    <h5>" Magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor " </h5>
+                    <p class="">OMK Paroki Yesus Diangkat Ke Surga Madura</p>
+                    <h5>"Jangan Lupa Saksikan Penampilanku Di Leadme Season 2" </h5>
 
                   </div>
                 </div>
@@ -372,69 +354,151 @@
 
 
   </section>
-  <!-- homepage blog grids -->
+
   <section class="news-1" id="blog">
     <div class="news py-5">
       <div class="container py-md-3">
         <div class="heading text-center mx-auto">
-          <h3 class="head">Latest News & Events</h3>
-          <p class="my-3 head"> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-            Nulla mollis dapibus nunc, ut rhoncus
-            turpis sodales quis. Integer sit amet mattis quam.</p>
-
+          <h3 class="head">LeadMe Merchandise</h3>
         </div>
-        <div class="blog-grids row mt-5">
-          <div class="col-lg-4 col-md-6 col-sm-12">
+          <br>
+        <div class="text-center">  
+         <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style="padding: 20px; width: 100%;">Dapatkan Di Tokopedia</button></a>
+         <div class="blog-grids row ">
+
+          <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="blog-grid" id="zoomIn">
               <a href="#">
-                <figure><img src="assets/images/g10.jpg" class="img-fluid" alt=""></figure>
+                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
               </a>
-              <div class="blog-info">
-                <h3><a href="#">Seven Outrageous Ideas Industry</a> </h3>
-                <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                  Nulla mollis dapibus nunc</p>
-                <ul>
-                  <li><a href="#author"><span class="fa fa-user-o mr-2"></span>Johnson smith</a></li>
-                  <li><a href="#author"><span class="fa fa-calendar mr-2"></span>Jan 16, 2020</a></li>
-                </ul>
+              <div class="text-center blog-info">
+                <h3><a href="#">Kaos Leadme Desain 1</a> </h3>
+                <p>Rp. 90.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 mt-md-0 mt-4">
+          
+            <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="blog-grid" id="zoomIn">
               <a href="#">
-                <figure><img src="assets/images/g9.jpg" class="img-fluid" alt=""></figure>
+                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
               </a>
-              <div class="blog-info">
-                <h3><a href="#">Seven Doubts You Should Clarify About</a> </h3>
-                <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                  Nulla mollis dapibus nunc</p>
-                <ul>
-                  <li><a href="#author"><span class="fa fa-user-o mr-2"></span>Alexander</a></li>
-                  <li><a href="#author"><span class="fa fa-calendar mr-2"></span>Jan 16, 2020</a></li>
-                </ul>
+              <div class="text-center blog-info">
+                <h3><a href="#">Kaos Leadme Desain 2</a> </h3>
+                <p>Rp. 90.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 mt-lg-0 mt-4">
+          
+            <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="blog-grid" id="zoomIn">
               <a href="#">
-                <figure><img src="assets/images/g8.jpg" class="img-fluid" alt=""></figure>
+                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
               </a>
-              <div class="blog-info">
-                <h3><a href="#">Why You Should Not Go To Industry</a> </h3>
-                <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                  Nulla mollis dapibus nunc</p>
-                <ul>
-                  <li><a href="#author"><span class="fa fa-user-o mr-2"></span>Elizabeth ker</a></li>
-                  <li><a href="#author"><span class="fa fa-calendar mr-2"></span>Jan 16, 2020</a></li>
-                </ul>
+              <div class="text-center blog-info">
+                <h3><a href="#">Gantungan Kunci LeadMe</a> </h3>
+                <p>Rp. 10.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
               </div>
             </div>
           </div>
+       
+        </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- //homepage blog grids -->
+        
+  <section class="news-1" id="blog">
+    <div class="news py-5">
+      <div class="container py-md-3">
+        <div class="heading text-center mx-auto">
+          <h3 class="head">Crew And Cast</h3>
+          <p class="my-3 head">Leadme Crew And Cast</p>
+
+        </div>
+        <h4 class="head text-center">Cast</h4>
+        <div class="blog-grids row ">
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Nama Asli</a> </h3>
+                <p>Dera</p>
+              </div>
+            </div>
+          </div>
+           <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Nama Asli</a> </h3>
+                <p>Sebagai Apa</p>
+              </div>
+            </div>
+          </div>
+           <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Nama Asli</a> </h3>
+                <p>Sebagai Apa</p>
+              </div>
+            </div>
+          </div>
+       
+        </div>
+
+        <h4 class="head text-center">Director</h4>
+        <div class="blog-grids row ">
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Nama Asli</a> </h3>
+                <p>Director Of Photography</p>
+              </div>
+            </div>
+          </div>
+           <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Nama Asli</a> </h3>
+                <p>Art Director</p>
+              </div>
+            </div>
+          </div>
+           <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Nama Asli</a> </h3>
+                <p>Sebagai Apa</p>
+              </div>
+            </div>
+          </div>
+       
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 @endsection
