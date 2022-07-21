@@ -20,33 +20,15 @@
             </div>
             <div class="user-info">
                 <a data-toggle="collapse" href="#collapseExample" class="username">
-                    <span>Nama</span>
+                    <span>{{Auth::user()->nama}}</span>
                 </a>
             </div>
         </div>
         <ul class="nav">
             <li class="nav-item @yield('dashboardStatus') ">
-                <a class="nav-link" href="{{url('/')}}">
+                <a class="nav-link" href="{{url('/dashboard')}}">
                     <i class="material-icons">dashboard</i>
                     <p> Dashboard </p>
-                </a>
-            </li>
-            <li class="nav-item @yield('strStatus') ">
-                <a class="nav-link" href="{{url('/str')}}">
-                    <i class="material-icons">list_alt</i>
-                    <p> Data SIP </p>
-                </a>
-            </li>
-            <li class="nav-item @yield('nakesStatus')">
-                <a class="nav-link" href="{{url('/nakes')}}">
-                    <i class="material-icons">people</i>
-                    <p> Data Nakes </p>
-                </a>
-            </li>
-            <li class="nav-item @yield('bioStatus')">
-                <a class="nav-link" href="{{url('/bio')}}">
-                    <i class="material-icons">account_box</i>
-                    <p> Bio Nakes </p>
                 </a>
             </li>
             <li class="nav-item ">
@@ -58,21 +40,46 @@
                 </a>
                 <div class="collapse @yield('masterShow')" id="sidebar-master">
                     <ul class="nav">
-                        <li class="nav-item @yield('faskesStatus')">
-                            <a class="nav-link" href="">
-                                <span class="sidebar-mini"> F </span>
-                                <span class="sidebar-normal"> Faskes </span>
+                        <li class="nav-item @yield('userStatus')">
+                            <a class="nav-link" href="{{route('user.index')}}">
+                                <span class="sidebar-mini"> U </span>
+                                <span class="sidebar-normal"> User </span>
                             </a>
                         </li>
-                        <li class="nav-item @yield('profesiStatus')">
+                        <li class="nav-item @yield('promoStatus')">
                             <a class="nav-link" href="">
                                 <span class="sidebar-mini"> P </span>
-                                <span class="sidebar-normal"> Profesi </span>
+                                <span class="sidebar-normal"> Promo </span>
+                            </a>
+                        </li>
+                        <li class="nav-item @yield('parokiStatus')">
+                            <a class="nav-link" href="">
+                                <span class="sidebar-mini"> P </span>
+                                <span class="sidebar-normal"> Paroki </span>
+                            </a>
+                        </li>
+                        <li class="nav-item @yield('penyelenggaraStatus')">
+                            <a class="nav-link" href="">
+                                <span class="sidebar-mini"> P </span>
+                                <span class="sidebar-normal"> Penyelenggara </span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
+            <li class="nav-item @yield('strStatus') ">
+                <a class="nav-link" href="{{url('/jadwalakan')}}">
+                    <i class="material-icons">schedule</i>
+                    <p> Jadwalkan Penayangan </p>
+                </a>
+            </li>
+            <li class="nav-item @yield('bioStatus')">
+                <a class="nav-link" href="{{url('/laporan')}}">
+                    <i class="material-icons">description</i>
+                    <p> Laporan </p>
+                </a>
+            </li>
+            
         </ul>
     </div>
     <div class="sidebar-background"></div>

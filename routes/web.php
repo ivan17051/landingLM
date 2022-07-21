@@ -23,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function(){
         return view('dashboard');
     });
+    
+    Route::apiResource('user', App\Http\Controllers\UserController::class)->except('show');
 });
 Auth::routes();
 

@@ -56,12 +56,19 @@ Author URL: http://w3layouts.com
             <li class="nav-item">
               <a class="nav-link" href="{{url('/kontak')}}">Kontak</a>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="{{url('/kontak')}}">Akun</a>
             </li>
+            @auth
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('/dashboard')}}">Dashboard</a>
+            </li>
+            @endauth
           </ul>
-
-          <a href="{{url('/login')}}" class="btn btn-theme2">Login</a>
+          @guest
+          <a href="{{url('/login')}}" class="btn btn-outline-light" >Login</a>
+          <a href="{{url('/register')}}" class="btn btn-outline-light" style="margin-left:10px;">Register</a>
+          @endguest
         </div>
       </div>
     </nav>
