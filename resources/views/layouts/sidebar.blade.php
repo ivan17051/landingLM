@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li class="nav-item @yield('parokiStatus')">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="{{route('paroki.index')}}">
                                 <span class="sidebar-mini"> P </span>
                                 <span class="sidebar-normal"> Paroki </span>
                             </a>

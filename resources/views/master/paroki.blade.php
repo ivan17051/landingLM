@@ -1,19 +1,15 @@
 @extends('layouts.adminLayouts')
 @extends('layouts.sidebar')
 
-@php
-$role = Auth::user()->role;
-@endphp
-
 @section('title')
-User
+Data Paroki
 @endsection
 
 @section('masterShow')
 show
 @endsection
 
-@section('userStatus')
+@section('parokiStatus')
 active
 @endsection
 
@@ -23,12 +19,12 @@ active
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Tambah User </h4>
+            <h4 class="modal-title">Tambah Paroki </h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             <i class="material-icons">clear</i>
             </button>
         </div>
-        <form class="form-horizontal input-margin-additional" method="POST" action="{{route('user.store')}}">
+        <form class="form-horizontal input-margin-additional" method="POST" action="{{route('paroki.store')}}">
         @csrf
         <div class="modal-body">
             <div class="form-group">
@@ -36,23 +32,9 @@ active
                 <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <div class="form-group">
-                <label for="username" class="bmd-label-floating">Email</label>
-                <input type="text" class="form-control" id="email" name="email" required>
+                <label for="username" class="bmd-label-floating">Alamat</label>
+                <input type="text" class="form-control" id="alamat" name="alamat" required>
             </div>
-            <label class="bmd-label force-top mt-1">Paroki User </label>
-            <select id="idParoki" name="idParoki" class="selectpicker form-control" data-size="7" data-style="btn btn-primary btn-round" title="Pilih Paroki">
-                <option disabled selected value="">Pilih Paroki</option>
-                @foreach($data['paroki'] as $unit) 
-                <option value="{{$unit->id}}">{{$unit->nama}}</option>
-                @endforeach
-            </select>
-            <label class="bmd-label force-top mt-3">Role User <small class="text-danger align-text-top">*wajib</small></label>
-            <select id="role" name="role" class="selectpicker form-control" data-size="7" data-style="btn btn-primary btn-round" title="Pilih Role">
-                <option disabled selected>Pilih Role</option>
-                <option>Penyelenggara</option>
-                <option>LeadMe</option>
-                <option>Guest</option>
-            </select>
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-link text-primary">Simpan</button>
@@ -69,12 +51,12 @@ active
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Edit Data User </h4>
+            <h4 class="modal-title">Edit Data Paroki </h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             <i class="material-icons">clear</i>
             </button>
         </div>
-        <form class="form-horizontal input-margin-additional" method="POST" action="{{route('user.store')}}">
+        <form class="form-horizontal input-margin-additional" method="POST" action="{{route('paroki.store')}}">
         @csrf
         @method('PUT')
         <div class="modal-body">
@@ -84,16 +66,9 @@ active
                 <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <div class="form-group">
-                <label for="username" class="bmd-label-floating">Email</label>
-                <input type="text" class="form-control" id="email" name="email" required>
+                <label for="username" class="bmd-label-floating">Alamat</label>
+                <input type="text" class="form-control" id="alamat" name="alamat" required>
             </div>
-            <label class="bmd-label force-top mt-1">Role User <small class="text-danger align-text-top">*wajib</small></label>
-            <select id="role" name="role" class="selectpicker form-control" data-size="7" data-style="btn btn-primary btn-round" title="Pilih Role">
-                <option disabled selected>Pilih Role</option>
-                <option>Penyelenggara</option>
-                <option>LeadMe</option>
-                <option>Guest</option>
-            </select>
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-link text-primary">Simpan</button>
@@ -159,7 +134,7 @@ active
         <div class="card">
         <div class="card-header card-header-tabs card-header-primary">
           <div class="subtitle-wrapper">
-            <h4 class="card-title">Data User</h4>
+            <h4 class="card-title">Data Paroki</h4>
           </div>
         </div>
         <div class="card-body">
@@ -173,36 +148,26 @@ active
                 <tr>
                     <th hidden>id</th>
                     <th data-priority="1">Nama</th>
-                    <th data-priority="2">Email</th>
-                    <th data-priority="2">Paroki</th>
-                    <th data-priority="1">Role</th>
+                    <th data-priority="2">Alamat</th>
                     <th data-priority="2" class="disabled-sorting text-right">Actions</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
                     <th>Nama</th>
-                    <th>Email</th>
-                    <th>Paroki</th>
-                    <th>Role</th>
+                    <th>Alamat</th>
                     <th class="disabled-sorting text-right">Actions</th>
                 </tr>
                 </tfoot>
                 <tbody>
-                @foreach($data['user'] as $key=>$unit)
+                @foreach($paroki as $key=>$unit)
                 <tr>
                     <td hidden>{{$unit->id}}</td>
                     <td>{{$unit->nama}}</td>
-                    <td>{{$unit->email}}</td>
-                    <td>{{isset($unit->paroki->nama) ? $unit->paroki->nama : '-'}}</td>
-                    <td>{{$unit->hakAkses}}</td>
+                    <td>{{$unit->alamat}}</td>
                     <td class="text-right">
-                        @if($unit->hakAkses=="admin")
-                        <a href="#" class="btn btn-link btn-sm text-dark btn-just-icon disabled"><i class="material-icons">lock</i></a>
-                        @else
                         <a href="#" class="btn btn-link btn-warning btn-just-icon edit btn-sm" key="{{$key}}" onclick="onEdit(this)"><i class="material-icons">edit</i></a>
                         <a href="#" class="btn btn-link btn-danger btn-just-icon remove btn-sm" key="{{$key}}" onclick="onDelete(this)"><i class="material-icons">delete</i></a>
-                        @endif
                     </td>
                 </tr>
                 @endforeach
@@ -226,7 +191,7 @@ active
 <script src="{{asset('public/js/plugins/bootstrap-tagsinput.js')}}"></script>
 <script>
 var table;
-var myUsers = @json($data['user']);
+var myUsers = @json($paroki);
 
 //ketika klik edit
 function onEdit(self) {
@@ -236,11 +201,10 @@ function onEdit(self) {
     $modal=$('#modalEdit');
     
     $modal.find('[name=id]').val(j['id']).change();
-    $modal.find('[name=email]').val(j['email']).change();
+    $modal.find('[name=alamat]').val(j['alamat']).change();
     $modal.find('[name=nama]').val(j['nama']).change();
-    $modal.find('[name=role]').val(j['role']).change().blur();
     
-    $modal.find('form').attr('action', "{{url('/user')}}/"+j['id']);
+    $modal.find('form').attr('action', "{{url('/paroki')}}/"+j['id']);
     $modal.modal('show');
 } 
 
@@ -250,7 +214,7 @@ function onDelete(self) {
     var j = myUsers[key];
     $modal=$('#modalDelete');
 
-    $modal.find('form').attr('action', "{{url('/user')}}/"+j['id']);
+    $modal.find('form').attr('action', "{{url('/paroki')}}/"+j['id']);
     $modal.modal('show');
 } 
 

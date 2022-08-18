@@ -3,56 +3,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Paroki;
 
-class UserController extends Controller
+class ParokiController extends Controller
 {
     public function index(){
-        $d['user'] = User::select('nama','email','noTelp','hakAkses','idParoki')->with('paroki')->get();
-        $d['paroki'] = Paroki::select('id','nama')->get();
-        // dd($user);
-        return view('master.user', ['data'=>$d]);
+        $paroki = Paroki::all();
+        return view('master.paroki', ['paroki'=>$paroki]);
     }
 
     public function store(Request $request){
         try{
-            $user_baru = new User($request->all());
-            $user_baru->password = Hash::make($request->username);
-            $user_baru->save();
+            $paroki_baru = new Paroki($request->all());
+            $paroki_baru->save();
         }catch(QueryException $exception){
             $this->flashError($exception->getMessage());
             return back();
         }
 
-        $this->flashSuccess('Data User Berhasil Ditambahkan');
+        $this->flashSuccess('Data Paroki Berhasil Ditambahkan');
         return back();
     }
 
     public function update(Request $request, $id){
         try{
-            $user = User::findOrFail($id);
-            $user->fill($request->all());
-            $user->save();
+            $paroki = Paroki::findOrFail($id);
+            $paroki->fill($request->all());
+            $paroki->save();
         }catch(QueryException $exception){
             $this->flashError($exception->getMessage());
             return back();
         }
         
-        $this->flashSuccess('Data User Berhasil Diubah');
+        $this->flashSuccess('Data Paroki Berhasil Diubah');
         return back();
     }
 
     public function destroy(Request $request, $id){
         try {
-            $user = User::findOrFail($id);
-            $user->delete();
+            $paroki = Paroki::findOrFail($id);
+            $paroki->delete();
         }catch (QueryException $exception) {
             $this->flashError($exception->getMessage());
             return back();
         }
 
-        $this->flashSuccess('Data User Berhasil Dihapus');
+        $this->flashSuccess('Data Paroki Berhasil Dihapus');
         return back();
     }
 }
