@@ -9,8 +9,8 @@ use App\Models\Paroki;
 class UserController extends Controller
 {
     public function index(){
-        $d['user'] = User::select('nama','email','noTelp','hakAkses','idParoki')->with('paroki')->get();
-        $d['paroki'] = Paroki::select('id','nama')->get();
+        $d['user'] = User::select('nama','email','noTelp','hakAkses','paroki','penyelenggara')->with('paroki')->get();
+        $d['paroki'] = Paroki::select('idParoki','namaParoki')->get();
         // dd($user);
         return view('master.user', ['data'=>$d]);
     }

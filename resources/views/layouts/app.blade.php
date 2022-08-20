@@ -14,6 +14,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/select.dataTables.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
@@ -79,5 +80,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('script')
 </body>
 </html>

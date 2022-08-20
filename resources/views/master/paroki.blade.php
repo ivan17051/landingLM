@@ -32,8 +32,12 @@ active
                 <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <div class="form-group">
-                <label for="username" class="bmd-label-floating">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" required>
+                <label for="kevikepan" class="bmd-label-floating">Kevikepan</label>
+                <input type="text" class="form-control" id="kevikepan" name="kevikepan" required>
+            </div>
+             <div class="form-group">
+                <label for="keuskupan" class="bmd-label-floating">Keuskupan</label>
+                <input type="text" class="form-control" id="keuskupan" name="keuskupan" required>
             </div>
         </div>
         <div class="modal-footer">
@@ -66,8 +70,12 @@ active
                 <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <div class="form-group">
-                <label for="username" class="bmd-label-floating">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" required>
+                <label for="kevikepan" class="bmd-label-floating">Kevikepan</label>
+                <input type="text" class="form-control" id="kevikepan" name="kevikepan" required>
+            </div>
+            <div class="form-group">
+                <label for="keuskupan" class="bmd-label-floating">Keuskupan</label>
+                <input type="text" class="form-control" id="keuskupan" name="keuskupan" required>
             </div>
         </div>
         <div class="modal-footer">
@@ -128,7 +136,7 @@ active
 @endsection
 
 @section('content')
-<div class="container-fluid">
+
     <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -143,28 +151,31 @@ active
             </div>
             
             <div class="material-datatables">
-            <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+            <table id="datatables" class="datatable table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                 <thead>
                 <tr>
                     <th hidden>id</th>
                     <th data-priority="1">Nama</th>
-                    <th data-priority="2">Alamat</th>
+                    <th data-priority="2">Kevikepan</th>
+                    <th data-priority="2">Keuskupan</th>
                     <th data-priority="2" class="disabled-sorting text-right">Actions</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
                     <th>Nama</th>
-                    <th>Alamat</th>
+                    <th>Kevikepan</th>
+                    <th>Keuskupan</th>
                     <th class="disabled-sorting text-right">Actions</th>
                 </tr>
                 </tfoot>
                 <tbody>
                 @foreach($paroki as $key=>$unit)
                 <tr>
-                    <td hidden>{{$unit->id}}</td>
-                    <td>{{$unit->nama}}</td>
-                    <td>{{$unit->alamat}}</td>
+                    <td hidden>{{$unit->idparoki}}</td>
+                    <td>{{$unit->namaParoki}}</td>
+                    <td>{{$unit->kevikepan}}</td>
+                    <td>{{$unit->keuskupan}}</td>
                     <td class="text-right">
                         <a href="#" class="btn btn-link btn-warning btn-just-icon edit btn-sm" key="{{$key}}" onclick="onEdit(this)"><i class="material-icons">edit</i></a>
                         <a href="#" class="btn btn-link btn-danger btn-just-icon remove btn-sm" key="{{$key}}" onclick="onDelete(this)"><i class="material-icons">delete</i></a>
@@ -182,7 +193,7 @@ active
     <!-- end col-md-12 -->
     </div>
     <!-- end row -->
-</div>
+
 
 @endsection
 
@@ -200,9 +211,10 @@ function onEdit(self) {
     
     $modal=$('#modalEdit');
     
-    $modal.find('[name=id]').val(j['id']).change();
-    $modal.find('[name=alamat]').val(j['alamat']).change();
-    $modal.find('[name=nama]').val(j['nama']).change();
+    $modal.find('[name=id]').val(j['idparoki']).change();
+    $modal.find('[name=kevikepan]').val(j['kevikepan']).change();
+    $modal.find('[name=keuskupan]').val(j['keuskupan']).change();
+    $modal.find('[name=nama]').val(j['namaParoki']).change();
     
     $modal.find('form').attr('action', "{{url('/paroki')}}/"+j['id']);
     $modal.modal('show');
@@ -214,7 +226,7 @@ function onDelete(self) {
     var j = myUsers[key];
     $modal=$('#modalDelete');
 
-    $modal.find('form').attr('action', "{{url('/paroki')}}/"+j['id']);
+    $modal.find('form').attr('action', "{{url('/paroki')}}/"+j['idParoki']);
     $modal.modal('show');
 } 
 

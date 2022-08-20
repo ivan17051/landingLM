@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Paroki extends Model
 {
     use HasFactory;
-    protected $table = 'mparoki';
+    protected $table = 'paroki';
 
     public $timestamps = false;
     /**
@@ -17,6 +17,6 @@ class Paroki extends Model
      * @var array
      */
     protected $fillable = [
-        'nama', 'alamat'
+        'nama'
     ];
 }

@@ -1,87 +1,94 @@
-@section('sidebar')
-
-<div class="sidebar" data-color="purple" data-background-color="black"
-    data-image="{{asset('public/img/sidebar-1.jpg')}}">
-    <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-        -->
-    <div class="logo">
-        <a class="logo-mini" href="{{url('/')}}"><img src="{{asset('assets/images/lg2.png')}}" style="height:40px;" alt=""></a>
-        <a class="logo-normal" href="{{url('/')}}"><img src="{{asset('assets/images/lg1.png')}}" style="height:35px;" alt=""></a>
-        <!-- <a href="{{url('/')}}" class="logo-mini">K</a> -->
-        <!-- <a href="{{url('/')}}" class="simple-text logo-normal">SDMK</a> -->
+<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
+        <img src="{{asset('public/assets/img/lg2.png')}}" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="{{asset('public/assets/img/lg1.png')}}" class="navbar-brand-img h-100" alt="main_logo">
+      </a>
     </div>
-    <div class="sidebar-wrapper">
-        <div class="user">
-            <div class="photo">
-                <img src="{{asset('public/assets/images/logo.png')}}" />
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="../pages/dashboard.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
-            <div class="user-info">
-                <a data-toggle="collapse" href="#collapseExample" class="username">
-                    <span>{{Auth::user()->nama}}</span>
-                </a>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link @yield('penayanganStatus')" href="{{route('penayangan.index')}}">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
+            <span class="nav-link-text ms-1">Penayangan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="../pages/billing.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Billing</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="../pages/virtual-reality.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-app text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Virtual Reality</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="../pages/rtl.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">RTL</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">LeadMe Crew</h6>
+        </li>
+
+        <li class="nav-item @yield('parokiStatus')" >
+          <a class="nav-link " href="{{route('paroki.index')}}">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Paroki</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="../pages/sign-in.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Sign In</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="../pages/sign-up.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-collection text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Sign Up</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidenav-footer mx-3 ">
+      <div class="card card-plain shadow-none" id="sidenavCard">
+        <div class="card-body text-center p-3 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">Need help?</h6>
+            <p class="text-xs font-weight-bold mb-0">Please check our docs</p>
+          </div>
         </div>
-        <ul class="nav">
-            <li class="nav-item @yield('dashboardStatus') ">
-                <a class="nav-link" href="{{url('/dashboard')}}">
-                    <i class="material-icons">dashboard</i>
-                    <p> Dashboard </p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#sidebar-master">
-                    <i class="material-icons">assignment</i>
-                    <p> Master
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse @yield('masterShow')" id="sidebar-master">
-                    <ul class="nav">
-                        <li class="nav-item @yield('userStatus')">
-                            <a class="nav-link" href="{{route('user.index')}}">
-                                <span class="sidebar-mini"> U </span>
-                                <span class="sidebar-normal"> User </span>
-                            </a>
-                        </li>
-                        <li class="nav-item @yield('promoStatus')">
-                            <a class="nav-link" href="">
-                                <span class="sidebar-mini"> P </span>
-                                <span class="sidebar-normal"> Promo </span>
-                            </a>
-                        </li>
-                        <li class="nav-item @yield('parokiStatus')">
-                            <a class="nav-link" href="{{route('paroki.index')}}">
-                                <span class="sidebar-mini"> P </span>
-                                <span class="sidebar-normal"> Paroki </span>
-                            </a>
-                        </li>
-                        <li class="nav-item @yield('penyelenggaraStatus')">
-                            <a class="nav-link" href="">
-                                <span class="sidebar-mini"> P </span>
-                                <span class="sidebar-normal"> Penyelenggara </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item @yield('strStatus') ">
-                <a class="nav-link" href="{{url('/jadwalakan')}}">
-                    <i class="material-icons">schedule</i>
-                    <p> Jadwalkan Penayangan </p>
-                </a>
-            </li>
-            <li class="nav-item @yield('bioStatus')">
-                <a class="nav-link" href="{{url('/laporan')}}">
-                    <i class="material-icons">description</i>
-                    <p> Laporan </p>
-                </a>
-            </li>
-            
-        </ul>
+      </div>
+      <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
+      <a class="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a>
     </div>
-    <div class="sidebar-background"></div>
-</div>
-@endsection
+  </aside>
