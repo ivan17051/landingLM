@@ -26,7 +26,9 @@ Route::middleware(['auth'])->group(function () {
     
     Route::apiResource('user', App\Http\Controllers\UserController::class)->except('show');
     Route::apiResource('paroki', App\Http\Controllers\ParokiController::class)->except('show');
-    Route::apiResource('penayangan', App\Http\Controllers\PenayanganController::class)->except('show');
+    
+    Route::get('penayangan/all','App\Http\Controllers\PenayanganController@index')->name('penayangan.all');
+    Route::get('penayangan/detail/{id}','App\Http\Controllers\PenayanganController@detail')->name('penayangan.detail');
 });
 Auth::routes();
 

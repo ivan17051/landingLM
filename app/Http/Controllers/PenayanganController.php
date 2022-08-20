@@ -8,8 +8,11 @@ use App\Models\Paroki;
 class PenayanganController extends Controller
 {
     public function index(){
-        $paroki = Paroki::all();
-        return view('master.penayangan', ['paroki'=>$paroki]);
+        return view('master.penayangan');
+    }
+
+    public function detail($idPenayangan){
+        return view('master.detailPenayangan');
     }
 
     public function store(Request $request){
