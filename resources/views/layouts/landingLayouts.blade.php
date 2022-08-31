@@ -25,8 +25,8 @@ Author URL: http://w3layouts.com
   <section class="w3l-bootstrap-header"  >
     <nav class=" navbar navbar-expand-lg navbar-light py-lg-3 py-2 " style="position: fixed;">
       <div class="container">
-        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg2.png')}}" style="height:40px;" alt=""></a>
-        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg1.png')}}" style="height:35px;margin-left:-20px;" alt=""></a>
+        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/img/lg2.png')}}" style="height:40px;" alt=""></a>
+        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/img/lg1.png')}}" style="height:35px;margin-left:-20px;" alt=""></a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

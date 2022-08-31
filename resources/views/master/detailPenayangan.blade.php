@@ -190,6 +190,60 @@ Detail Penayangan
                                   
                                     <div class="col-md-1 ">
                                         <br>
+                                        <a href="" class="btn btn-success" style="width: 100%">Beli Tiket</a>
+                                        <a href="" class="btn btn-primary" style="width: 100%">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+
+    </div>
+
+    <br>
+    <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h3>Promo</h3><br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3"><h6>Kode Promo</h6>
+                                        <h4>PROMOTERUS</h4>
+                                        <h6>Diskon 10% Maksimal 20.000. Minimal Transaksi 50.000 <br> Bisa Digabung, 1x per pengguna</h6>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6>Berlaku Untuk</h6>
+                                        <div class="row">
+                                            <h6>Tiket Bronze
+                                            <br>Penayangan 18 Oktober 2022
+                                            <br>Hanya Umat Paroki .....
+                                            <br><br>Sumber : OMK Paroki</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 col-sm-12">
+                                          <div class="row">
+                                            <div class="col-md-4 col-sm-4"><h6>Total Kupon</h6><h3>50</h3></div>
+                                            <div class="col-md-4 col-sm-4"><h6>Kupon Terpakai</h6><h3>50</h3></div>
+                                            <div class="col-md-4 col-sm-4"><h6>Sisa Kupon</h6><h3>50</h3></div>
+                                        </div>
+                                        <div class="row">
+                                            <h6>Total Diskon :</h6>
+                                            <h3>Rp. 50.000</h3>
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="col-md-1 ">
+                                        <br>
                                         <a href="" class="btn btn-primary" style="width: 100%">Edit</a>
                                     </div>
                                 </div>

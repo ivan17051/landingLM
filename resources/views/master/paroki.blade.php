@@ -20,15 +20,12 @@ active
         <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title">Tambah Paroki </h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            <i class="material-icons">clear</i>
-            </button>
         </div>
         <form class="form-horizontal input-margin-additional" method="POST" action="{{route('paroki.store')}}">
         @csrf
         <div class="modal-body">
             <div class="form-group">
-                <label for="nama" class="bmd-label-floating">Nama</label>
+                <label for="nama" class="bmd-label-floating">Nama Paroki</label>
                 <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <div class="form-group">
@@ -41,8 +38,8 @@ active
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-link text-primary">Simpan</button>
-            <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
         </div>
         </form>
         </div>
@@ -56,9 +53,6 @@ active
         <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title">Edit Data Paroki </h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            <i class="material-icons">clear</i>
-            </button>
         </div>
         <form class="form-horizontal input-margin-additional" method="POST" action="{{route('paroki.store')}}">
         @csrf
@@ -79,8 +73,8 @@ active
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-link text-primary">Simpan</button>
-            <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
         </div>
         </form>
         </div>
@@ -102,8 +96,8 @@ active
             <p>Yakin ingin menghapus?</p>
         </div>
         <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-link" data-dismiss="modal">Tidak</button>
-            <button type="submit" class="btn btn-danger btn-link">Ya, Hapus
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
+            <button type="submit" class="btn btn-danger">Ya, Hapus
                 <div class="ripple-container"></div>
             </button>
         </div>
@@ -123,8 +117,8 @@ active
             <p id="peringatanValidasi"></p>
         </div>
         <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-link" data-dismiss="modal">Tidak</button>
-            <button type="submit" class="btn btn-warning btn-link" onclick="$('#formValidasi').trigger('submit')">Ya
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
+            <button type="submit" class="btn btn-warning" onclick="$('#formValidasi').trigger('submit')">Ya
                 <div class="ripple-container"></div>
             </button>
         </div>
@@ -140,18 +134,13 @@ active
     <div class="row">
     <div class="col-md-12">
         <div class="card">
-        <div class="card-header card-header-tabs card-header-primary">
-          <div class="subtitle-wrapper">
-            <h4 class="card-title">Data Paroki</h4>
-          </div>
-        </div>
         <div class="card-body">
-            <div class="toolbar text-right">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambah">Tambah</button>
+            <div class="toolbar text-right row">
+                <button type="button" style="float:right;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah Paroki</button>
             </div>
             
-            <div class="material-datatables">
-            <table id="datatables" class="datatable table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+            <div class="material-datatables table-responsive row">
+            <table id="mytable1" class="datatable table table-striped table-no-bordered table-hover table-wrap" cellspacing="0" width="100%" style="width:100%">
                 <thead>
                 <tr>
                     <th hidden>id</th>
@@ -173,12 +162,12 @@ active
                 @foreach($paroki as $key=>$unit)
                 <tr>
                     <td hidden>{{$unit->idparoki}}</td>
-                    <td>{{$unit->namaParoki}}</td>
+                    <td class="text-wrap" style="min-width: 300px;">{{$unit->namaParoki}}</td>
                     <td>{{$unit->kevikepan}}</td>
                     <td>{{$unit->keuskupan}}</td>
-                    <td class="text-right">
-                        <a href="#" class="btn btn-link btn-warning btn-just-icon edit btn-sm" key="{{$key}}" onclick="onEdit(this)"><i class="material-icons">edit</i></a>
-                        <a href="#" class="btn btn-link btn-danger btn-just-icon remove btn-sm" key="{{$key}}" onclick="onDelete(this)"><i class="material-icons">delete</i></a>
+                    <td class="text-right text-wrap">
+                        <a href="#" class="btn btn-warning btn-just-icon edit btn-sm" key="{{$key}}" onclick="onEdit(this)"><i class="material-icons">edit</i></a>
+                        <a href="#" class="btn btn-danger btn-just-icon remove btn-sm" key="{{$key}}" onclick="onDelete(this)"><i class="material-icons">delete</i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -231,24 +220,26 @@ function onDelete(self) {
 } 
 
 $(document).ready(function() {
-    my.initFormExtendedDatetimepickers();
-    if ($('.slider').length != 0) {
-        md.initSliders();
-    }
+    //my.initFormExtendedDatetimepickers();
+    //if ($('.slider').length != 0) {
+     ///   md.initSliders();
+    //}
 
-    table = $('#datatables').DataTable({
-        responsive:{
-            details: false
-        },
-        columnDefs: [
-            {   
-                class: "details-control",
-                orderable: false,
-                targets: 0
-            }
-        ]
-    });
-
+    //table = $('.setDatatables').DataTable({
+    //    responsive:{
+    //        details: false
+    //    },
+    //    columnDefs: [
+    //        {   
+    //           class: "details-control",
+    //            orderable: false,
+    //            targets: 0
+    //        }
+    //    ]
+    //});
+   
+    $('#mytable1').DataTable();
+    
 } );
 </script>
 @endsection

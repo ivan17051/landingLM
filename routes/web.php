@@ -16,6 +16,7 @@ use App\Http\Controllers\LandingController;
 
 Auth::routes();
 Route::get('/', [LandingController::class, 'index']);
+Route::get('/jadwal', [LandingController::class, 'jadwal']);
 Route::get('/login', [LandingController::class, 'login']);
 
 Route::middleware(['auth'])->group(function () {

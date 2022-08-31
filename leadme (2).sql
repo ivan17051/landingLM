@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Agu 2022 pada 16.48
+-- Waktu pembuatan: 31 Agu 2022 pada 18.04
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.1
 
@@ -32,6 +32,20 @@ CREATE TABLE `fasilitas` (
   `nama` varchar(45) DEFAULT NULL,
   `icon` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `fasilitas`
+--
+
+INSERT INTO `fasilitas` (`idfasilitas`, `nama`, `icon`) VALUES
+(1, 'Indoor', NULL),
+(2, 'Outdoor', NULL),
+(3, 'Parkir Gratis', NULL),
+(4, 'Snack', NULL),
+(5, 'Makananan', NULL),
+(6, 'Minuman', NULL),
+(7, 'Kursi Standar', NULL),
+(8, 'Kursi Premium', NULL);
 
 -- --------------------------------------------------------
 
@@ -129,7 +143,6 @@ INSERT INTO `paroki` (`idparoki`, `namaParoki`, `kevikepan`, `keuskupan`) VALUES
 
 CREATE TABLE `penayangan` (
   `idpenayangan` int(11) NOT NULL,
-  `lokasi` int(11) NOT NULL,
   `penyelenggara` int(11) NOT NULL,
   `tanggal` datetime DEFAULT NULL,
   `keterangan` varchar(500) DEFAULT NULL,
@@ -140,6 +153,13 @@ CREATE TABLE `penayangan` (
   `jual` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `penayangan`
+--
+
+INSERT INTO `penayangan` (`idpenayangan`, `penyelenggara`, `tanggal`, `keterangan`, `nama`, `alamat`, `embedLink`, `paroki`, `jual`) VALUES
+(1, 1, '2022-11-24 18:30:00', 'Penayangan FIlm Outdoor Dengan Layar Lebar Dan Cahaya Bintang', 'Lapangan Maria Ratu Damai', 'Jalan Pogot Baru no 77-79 Surabaya', 'https://www.google.com/maps/place/Gereja+Katolik+Ratu+Pencinta+Damai/@-7.2325175,112.7629786,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd7f9a84ecc0aaf:0xe0fa5dc16289bddd!8m2!3d-7.2325228!4d112.7651673', 6, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -149,8 +169,19 @@ CREATE TABLE `penayangan` (
 CREATE TABLE `penyelenggara` (
   `idpenyelenggara` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `contactPerson` varchar(100) DEFAULT NULL
+  `namaContactPerson` varchar(45) DEFAULT NULL,
+  `noTelpContactPerson` varchar(45) DEFAULT NULL,
+  `saldoPenyelenggara` int(11) DEFAULT NULL,
+  `saldoLeadme` int(11) DEFAULT NULL,
+  `hpptiket` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `penyelenggara`
+--
+
+INSERT INTO `penyelenggara` (`idpenyelenggara`, `nama`, `namaContactPerson`, `noTelpContactPerson`, `saldoPenyelenggara`, `saldoLeadme`, `hpptiket`) VALUES
+(1, 'OMK RPD', 'Bagas', '09123456789', 0, 0, 15000);
 
 -- --------------------------------------------------------
 
@@ -167,28 +198,14 @@ CREATE TABLE `promo` (
   `minimumTotal` int(11) DEFAULT NULL,
   `potonganPersen` int(11) DEFAULT NULL,
   `maksimumPotongan` int(11) DEFAULT NULL,
-  `tiketGratis` int(11) DEFAULT NULL,
   `maksimalPenggunaanUser` int(11) DEFAULT NULL,
-  `maksimalPenggunaanTransaksi` int(11) DEFAULT NULL,
+  `bisaDigabung` int(11) DEFAULT NULL,
   `mulai` datetime DEFAULT NULL,
   `selesai` datetime DEFAULT NULL,
-  `penanggung` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `promoberlaku`
---
-
-CREATE TABLE `promoberlaku` (
-  `idpromoBerlaku` int(11) NOT NULL,
-  `kuota` int(11) DEFAULT NULL,
-  `terpakai` int(11) DEFAULT NULL,
-  `paroki` int(11) DEFAULT NULL,
+  `penanggung` varchar(45) DEFAULT NULL,
   `penayangan` int(11) DEFAULT NULL,
-  `Promo_idPromo` int(11) NOT NULL,
-  `untuk` varchar(45) DEFAULT NULL
+  `paroki` int(11) DEFAULT NULL,
+  `tiket` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -200,7 +217,22 @@ CREATE TABLE `promoberlaku` (
 CREATE TABLE `promodipakai` (
   `Promo` int(11) NOT NULL,
   `transaksi` varchar(20) NOT NULL,
-  `nominal` int(11) DEFAULT NULL
+  `nominalDiskon` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `riwayatuang`
+--
+
+CREATE TABLE `riwayatuang` (
+  `idRiwayatUang` int(11) NOT NULL,
+  `penyelenggara` int(11) NOT NULL,
+  `transaksi` varchar(20) DEFAULT NULL,
+  `nominal` int(11) DEFAULT NULL,
+  `inOut` int(11) DEFAULT NULL,
+  `keterangan` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -218,6 +250,14 @@ CREATE TABLE `tiket` (
   `terjual` int(11) DEFAULT NULL,
   `deskripsi` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `tiket`
+--
+
+INSERT INTO `tiket` (`idtiket`, `penayangan`, `namaTiket`, `harga`, `jumlah`, `terjual`, `deskripsi`) VALUES
+(1, 1, 'Bronze', 15000, 100, 0, 'Tiket Paling Murah'),
+(2, 1, 'Gold', 25000, 25, 0, 'Tiket Termahal');
 
 -- --------------------------------------------------------
 
@@ -340,16 +380,10 @@ ALTER TABLE `penyelenggara`
 -- Indeks untuk tabel `promo`
 --
 ALTER TABLE `promo`
-  ADD PRIMARY KEY (`idPromo`);
-
---
--- Indeks untuk tabel `promoberlaku`
---
-ALTER TABLE `promoberlaku`
-  ADD PRIMARY KEY (`idpromoBerlaku`),
-  ADD KEY `fk_promoBerlaku_paroki1_idx` (`paroki`),
-  ADD KEY `fk_promoBerlaku_penayangan1_idx` (`penayangan`),
-  ADD KEY `fk_promoBerlaku_Promo1_idx` (`Promo_idPromo`);
+  ADD PRIMARY KEY (`idPromo`),
+  ADD KEY `fk_promo_penayangan1_idx` (`penayangan`),
+  ADD KEY `fk_promo_paroki1_idx` (`paroki`),
+  ADD KEY `fk_promo_tiket1_idx` (`tiket`);
 
 --
 -- Indeks untuk tabel `promodipakai`
@@ -358,6 +392,14 @@ ALTER TABLE `promodipakai`
   ADD PRIMARY KEY (`Promo`,`transaksi`),
   ADD KEY `fk_Promo_has_transaksi_transaksi1_idx` (`transaksi`),
   ADD KEY `fk_Promo_has_transaksi_Promo1_idx` (`Promo`);
+
+--
+-- Indeks untuk tabel `riwayatuang`
+--
+ALTER TABLE `riwayatuang`
+  ADD PRIMARY KEY (`idRiwayatUang`),
+  ADD KEY `fk_RiwayatUang_penyelenggara1_idx` (`penyelenggara`),
+  ADD KEY `fk_RiwayatUang_transaksi1_idx` (`transaksi`);
 
 --
 -- Indeks untuk tabel `tiket`
@@ -405,7 +447,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `fasilitas`
 --
 ALTER TABLE `fasilitas`
-  MODIFY `idfasilitas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idfasilitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `foto`
@@ -423,25 +465,19 @@ ALTER TABLE `paroki`
 -- AUTO_INCREMENT untuk tabel `penayangan`
 --
 ALTER TABLE `penayangan`
-  MODIFY `idpenayangan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpenayangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `penyelenggara`
 --
 ALTER TABLE `penyelenggara`
-  MODIFY `idpenyelenggara` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `promoberlaku`
---
-ALTER TABLE `promoberlaku`
-  MODIFY `idpromoBerlaku` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpenyelenggara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `idtiket` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -468,12 +504,12 @@ ALTER TABLE `penayangan`
   ADD CONSTRAINT `fk_penayangan_penyelenggara1` FOREIGN KEY (`penyelenggara`) REFERENCES `penyelenggara` (`idpenyelenggara`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ketidakleluasaan untuk tabel `promoberlaku`
+-- Ketidakleluasaan untuk tabel `promo`
 --
-ALTER TABLE `promoberlaku`
-  ADD CONSTRAINT `fk_promoBerlaku_Promo1` FOREIGN KEY (`Promo_idPromo`) REFERENCES `promo` (`idPromo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_promoBerlaku_paroki1` FOREIGN KEY (`paroki`) REFERENCES `paroki` (`idparoki`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_promoBerlaku_penayangan1` FOREIGN KEY (`penayangan`) REFERENCES `penayangan` (`idpenayangan`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `promo`
+  ADD CONSTRAINT `fk_promo_paroki1` FOREIGN KEY (`paroki`) REFERENCES `paroki` (`idparoki`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_promo_penayangan1` FOREIGN KEY (`penayangan`) REFERENCES `penayangan` (`idpenayangan`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_promo_tiket1` FOREIGN KEY (`tiket`) REFERENCES `tiket` (`idtiket`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ketidakleluasaan untuk tabel `promodipakai`
@@ -481,6 +517,13 @@ ALTER TABLE `promoberlaku`
 ALTER TABLE `promodipakai`
   ADD CONSTRAINT `fk_Promo_has_transaksi_Promo1` FOREIGN KEY (`Promo`) REFERENCES `promo` (`idPromo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Promo_has_transaksi_transaksi1` FOREIGN KEY (`transaksi`) REFERENCES `transaksi` (`idtransaksi`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Ketidakleluasaan untuk tabel `riwayatuang`
+--
+ALTER TABLE `riwayatuang`
+  ADD CONSTRAINT `fk_RiwayatUang_penyelenggara1` FOREIGN KEY (`penyelenggara`) REFERENCES `penyelenggara` (`idpenyelenggara`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_RiwayatUang_transaksi1` FOREIGN KEY (`transaksi`) REFERENCES `transaksi` (`idtransaksi`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ketidakleluasaan untuk tabel `tiket`
