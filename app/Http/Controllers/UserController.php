@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Paroki;
+use App\Models\Penyelenggara;
 
 class UserController extends Controller
 {
     public function index(){
-        $d['user'] = User::select('nama','email','noTelp','hakAkses','paroki','penyelenggara')->with('paroki')->get();
-        $d['paroki'] = Paroki::select('idParoki','namaParoki')->get();
+        $d['user'] = User::with('parokiRelation:idParoki,namaParoki','penyelenggaraRelation:idPenyelenggara,nama')
+            ->get(['nama','email','noTelp','hakAkses','paroki','penyelenggara']);
+        $d['paroki'] = Paroki::get(['idParoki','namaParoki']);
+        $d['penyelenggara'] = Penyelenggara::get(['idpenyelenggara','nama']);
         // dd($user);
         return view('master.user', ['data'=>$d]);
     }

@@ -26,7 +26,7 @@
     <!-- DateTimePicker Tempus Dominus -->
     <!-- <link rel="stylesheet" href="{{asset('public/vendor/datetimepicker-tempus-dominus/css/tempus-dominus.min.css')}}"> -->    
 
-    <link href="{{asset('public/css/custom.css')}}" rel="stylesheet" />
+    <link href="{{asset('public/assets/css/custom.css')}}" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">

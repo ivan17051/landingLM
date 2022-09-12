@@ -40,7 +40,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function paroki(){
-        return $this->belongsTo(Paroki::class, 'idParoki');
+    public function parokiRelation(){
+        return $this->belongsTo(Paroki::class, 'paroki', 'idParoki');
+    }
+    public function penyelenggaraRelation(){
+        return $this->belongsTo(Penyelenggara::class, 'penyelenggara', 'idPenyelenggara');
     }
 }

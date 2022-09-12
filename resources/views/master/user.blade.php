@@ -6,7 +6,7 @@ $role = Auth::user()->role;
 @endphp
 
 @section('title')
-User
+Data User
 @endsection
 
 @section('masterShow')
@@ -43,7 +43,7 @@ active
             <select id="idParoki" name="idParoki" class="selectpicker form-control" data-size="7" data-style="btn btn-primary btn-round" title="Pilih Paroki">
                 <option disabled selected value="">Pilih Paroki</option>
                 @foreach($data['paroki'] as $unit) 
-                <option value="{{$unit->id}}">{{$unit->nama}}</option>
+                <option value="{{$unit->idParoki}}">{{$unit->namaParoki}}</option>
                 @endforeach
             </select>
             <label class="bmd-label force-top mt-3">Role User <small class="text-danger align-text-top">*wajib</small></label>
@@ -153,72 +153,62 @@ active
 @endsection
 
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-        <div class="card-header card-header-tabs card-header-primary">
-          <div class="subtitle-wrapper">
-            <h4 class="card-title">Data User</h4>
+<div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+            <div class="toolbar text-right row">
+                <button type="button" style="float:right;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah User</button>
+            </div>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Penyelenggara</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  @foreach($data['user'] as $key=>$unit)
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{$unit->nama}}</h6>
+                            <p class="text-xs text-secondary mb-0">{{$unit->email}}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">{{isset($unit->paroki) ? $unit->parokiRelation->namaParoki : '-'}}</p>
+                        <p class="text-xs text-secondary mb-0">{{isset($unit->penyelenggara) ? $unit->penyelenggaraRelation->nama : '-'}}</p>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success">{{$unit->hakAkses}}</span>
+                      </td>
+                      <td class="align-right">
+                        <!-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          Edit
+                        </a> -->
+                        <a href="#" class="btn btn-warning btn-sm px-3 mb-0" key="{{$key}}" onclick="onEdit(this)"><i class="fas fa-pencil-alt me-2"></i>Edit</a>
+                        <a href="#" class="btn btn-danger btn-sm px-3 mb-0" key="{{$key}}" onclick="onDelete(this)"><i class="far fa-trash-alt me-2"></i>Hapus</a>
+                      </td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="card-body">
-            <div class="toolbar text-right">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambah">Tambah</button>
-            </div>
-            
-            <div class="material-datatables">
-            <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
-                <thead>
-                <tr>
-                    <th hidden>id</th>
-                    <th data-priority="1">Nama</th>
-                    <th data-priority="2">Email</th>
-                    <th data-priority="2">Paroki</th>
-                    <th data-priority="1">Role</th>
-                    <th data-priority="2" class="disabled-sorting text-right">Actions</th>
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                    <th>Nama</th>
-                    <th>Email</th>
-                    <th>Paroki</th>
-                    <th>Role</th>
-                    <th class="disabled-sorting text-right">Actions</th>
-                </tr>
-                </tfoot>
-                <tbody>
-                @foreach($data['user'] as $key=>$unit)
-                <tr>
-                    <td hidden>{{$unit->id}}</td>
-                    <td>{{$unit->nama}}</td>
-                    <td>{{$unit->email}}</td>
-                    <td>{{isset($unit->paroki->nama) ? $unit->paroki->nama : '-'}}</td>
-                    <td>{{$unit->hakAkses}}</td>
-                    <td class="text-right">
-                        @if($unit->hakAkses=="admin")
-                        <a href="#" class="btn btn-link btn-sm text-dark btn-just-icon disabled"><i class="material-icons">lock</i></a>
-                        @else
-                        <a href="#" class="btn btn-link btn-warning btn-just-icon edit btn-sm" key="{{$key}}" onclick="onEdit(this)"><i class="material-icons">edit</i></a>
-                        <a href="#" class="btn btn-link btn-danger btn-just-icon remove btn-sm" key="{{$key}}" onclick="onDelete(this)"><i class="material-icons">delete</i></a>
-                        @endif
-                    </td>
-                </tr>
-                @endforeach
-                </tbody>
-            </table>
-            </div>
-        </div>
-        <!-- end content-->
-        </div>
-        <!--  end card  -->
+      </div>
+      
     </div>
-    <!-- end col-md-12 -->
-    </div>
-    <!-- end row -->
-</div>
-
 @endsection
 
 @section('script')
