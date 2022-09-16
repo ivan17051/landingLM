@@ -9,6 +9,7 @@ class Penyelenggara extends Model
 {
     use HasFactory;
     protected $table = 'penyelenggara';
+    public $primaryKey = 'idpenyelenggara';
 
     public $timestamps = false;
     /**

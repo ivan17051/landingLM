@@ -9,7 +9,6 @@ class PenyelenggaraController extends Controller
 {
     public function index(){
         $penyelenggara = Penyelenggara::all();
-        // dd($penyelenggara);
         return view('master.penyelenggara', ['penyelenggara'=>$penyelenggara]);
     }
 
@@ -20,6 +19,8 @@ class PenyelenggaraController extends Controller
     public function store(Request $request){
         try{
             $penyelenggara_baru = new Penyelenggara($request->all());
+            $penyelenggara_baru->saldoPenyelenggara = '0';
+            $penyelenggara_baru->saldoLeadme = '0';
             $penyelenggara_baru->save();
         }catch(QueryException $exception){
             $this->flashError($exception->getMessage());
@@ -30,9 +31,10 @@ class PenyelenggaraController extends Controller
         return back();
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request){
         try{
-            $penyelenggara = Penyelenggara::findOrFail($id);
+            
+            $penyelenggara = Penyelenggara::where('idpenyelenggara', $request->idpenyelenggara)->first();
             $penyelenggara->fill($request->all());
             $penyelenggara->save();
         }catch(QueryException $exception){
