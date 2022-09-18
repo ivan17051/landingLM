@@ -19,43 +19,41 @@ Penayangan
 
 @section('content')
 
-    <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-        <div class="card-header card-header-primary">
-          <div class="subtitle-wrapper row">
-            <div class="col-md-8"> <h4 class="card-title">Jadwal Penayangan </h4></div>
-            <div class="col-md-4"> <a href="" style="width: 100%;" class="btn btn-primary">Tambah Jadwal</a> </div>
-           
-          </div>
-        </div>
-        <div class="card-body">
-            <div class="card">
-                <div class="row">
-                <div class="col-md-4">
-                    <h6>ini Gambar</h6>
+    
+
+<div class="row">
+  @foreach($penayangan as $unit)
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+            <div class="col-lg-5">
+              <div class="position-relative">
+                <div class="blur-shadow-image">
+                    <img class="w-100 rounded-3 shadow-lg" src="https://images.pexels.com/photos/208277/pexels-photo-208277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                 </div>
-                <div class="col-md-8" style="padding: 40px;">
-                    <h3>17 Oktober 2022 | 18.00 WIB</h3>
-                    <h4>RPD Arena (nama)</h4>
-                    <h5>Paroki Ratu Pencinta Damai Surabaya</h5>
-                    <h5>jalan Pogot baru no 77-79 Surabaya</h5>
-                    <p>ini deskripsi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed augue semper, mattis urna laoreet, ullamcorper enim. Praesent pulvinar placerat ultrices. Integer consequat risus a quam sagittis semper. Fusce ac fermentum dui. Sed velit arcu, pulvinar id pharetra nec, viverra pellentesque justo. Suspendisse vulputate non mauris a semper. Mauris hendrerit, odio vitae tincidunt fringilla, erat enim imperdiet mi, vitae hendrerit velit dui eu magna. Nullam nec felis enim. Suspendisse imperdiet libero ligula, vitae egestas tellus dictum nec. Etiam accumsan tempus nisi, sit amet pharetra arcu semper eget.</p>
-                    <div class="row">
-                        <div class="col-md-12"><a href="{{url('penayangan/detail/1')}}" style="width: 100%; margin: 5px;" class="btn btn-primary">Detail</a></div>
-                    </div>
-                </div>
-                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 my-auto">
+            <div class="text-left">
+                
+                <h5 class="font-weight-bolder mb-0">{{$unit->nama}}</h5>
+                <div class="text-uppercase text-sm font-weight-bold mb-2">{{$unit->alamat}}</div>
+                <div class="text-uppercase text-sm font-weight-bold mb-2">{{Carbon\Carbon::make($unit->tanggal)->translatedFormat('d F Y | h:i')}}</div>
+                <div class="text-sm mb-2">{{$unit->keterangan}}</div>
+                
+                <a href="{{route('penayangan.detail', ['id'=>$unit->idpenayangan])}}" class="btn btn-primary btn-sm mt-3 w-100" >Lihat Detail</a>
+            </div>
             </div>
         </div>
-        <!-- end content-->
-        </div>
-        <!--  end card  -->
+      </div>
     </div>
-    <!-- end col-md-12 -->
-    </div>
-    <!-- end row -->
+  </div>
+  @endforeach
+</div>
 
+
+</div>
 
 @endsection
 

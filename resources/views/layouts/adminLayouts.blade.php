@@ -47,10 +47,38 @@
           
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Hi, {{auth()->user()->nama}}</span>
               </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2" style="margin-top:-20px !important;" aria-labelledby="dropdownUser">
+                <!-- <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <i class="fa fa-user me-sm-1"></i>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal">
+                           <span class="font-weight-bold"> Log Out</span> 
+                          <span class="d-sm-inline d-none"> Log Out</span>
+                        </h6>
+                      </div>
+                    </div>
+                  </a>
+                </li> -->
+                <div class="dropdown-item text-left" aria-labelledby="dropdownUser">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                        <i class="fa fa-user me-sm-1"></i> {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+              </ul>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">

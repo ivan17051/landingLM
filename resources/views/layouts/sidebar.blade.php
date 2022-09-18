@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main" style="height:calc(100vh - 150px) !important;">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link " href="../pages/dashboard.html">
+          <a class="nav-link @yield('dashboardStatus')" href="{{url('/dashboard')}}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -25,42 +25,41 @@
             <span class="nav-link-text ms-1">Penayangan</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link " href="../pages/billing.html">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Billing</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link @yield('penyelenggaraStatus')" href="{{route('penyelenggara.index')}}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-app text-info text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Penyelenggara</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="../pages/rtl.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">RTL</span>
-          </a>
-        </li>
+        </li> -->
+        <a data-bs-toggle="collapse" href="#dataMaster" class="nav-link active" aria-controls="dashboardsExamples"
+          role="button" aria-expanded="true">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-shop text-primary text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Data Master</span>
+        </a>
+        <div class="collapse @yield('masterShow')" id="dataMaster" style="">
+          <ul class="nav ms-4">
+            <li class="nav-item" >
+              <a class="nav-link @yield('parokiStatus')" href="{{route('paroki.index')}}">
+                <span class="sidenav-normal"> Paroki </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link @yield('penyelenggaraStatus')" href="{{route('penyelenggara.index')}}">
+                <span class="sidenav-normal"> Penyelenggara </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">LeadMe Crew</h6>
         </li>
 
-        <li class="nav-item" >
-          <a class="nav-link @yield('parokiStatus')" href="{{route('paroki.index')}}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fas fa-church text-info text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Paroki</span>
-          </a>
-        </li>
+        
         <li class="nav-item" >
           <a class="nav-link @yield('userStatus')" href="{{route('user.index')}}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -69,7 +68,7 @@
             <span class="nav-link-text ms-1">User</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link " href="../pages/sign-in.html">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
@@ -84,7 +83,7 @@
             </div>
             <span class="nav-link-text ms-1">Sign Up</span>
           </a>
-        </li>
+        </li> -->
       </ul>
     </div>
     <!-- <div class="sidenav-footer mx-3 ">

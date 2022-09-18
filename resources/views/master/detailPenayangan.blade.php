@@ -23,11 +23,10 @@ Detail Penayangan
     <div class="col-md-12">
         <div class="card">
         <div class="card-body">
-            <h2>17 Oktober 2022 | 18.00 WIB</h2>
-            <h3>RPD Arena (nama)</h3>
-            <h5>Paroki Ratu Pencinta Damai Surabaya</h5>
-            <h5>jalan Pogot baru no 77-79 Surabaya</h5>
-            <p>ini deskripsi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed augue semper, mattis urna laoreet, ullamcorper enim. Praesent pulvinar placerat ultrices. Integer consequat risus a quam sagittis semper. Fusce ac fermentum dui. Sed velit arcu, pulvinar id pharetra nec, viverra pellentesque justo. Suspendisse vulputate non mauris a semper. Mauris hendrerit, odio vitae tincidunt fringilla, erat enim imperdiet mi, vitae hendrerit velit dui eu magna. Nullam nec felis enim. Suspendisse imperdiet libero ligula, vitae egestas tellus dictum nec. Etiam accumsan tempus nisi, sit amet pharetra arcu semper eget.</p>
+          <h3>{{$data['penayangan']->nama}}</h3>  
+          <h3>{{Carbon\Carbon::make($data['penayangan']->tanggal)->translatedFormat('d F Y | h:i')}}</h3>
+          <h5>{{$data['penayangan']->alamat}}</h5>
+          <p>{{$data['penayangan']->keterangan}}</p>
         </div>
         <!-- end content-->
         </div>
@@ -156,47 +155,54 @@ Detail Penayangan
                 <h3>Tiket</h3><br>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
+                      @foreach($data['tiket'] as $unit)
+                        <div class="card mb-3">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-4"><h4>Bronze</h4>
-                                        <h6>Lore ipsulknefjefje fefj ewn fjewf  ewfj ewf ewbfkewfn ewjfn jewfn j ef</h6>
+                                    <div class="col-md-4"><h4>{{$unit->namaTiket}}</h4>
+                                        <h6>{{$unit->deskripsi}}</h6>
                                     </div>
                                     <div class="col-md-4">
                                         <h6>Fasilitas</h6>
                                         <div class="row">
                                             <div class="col">
-                                                <p>-halo <br>-halo <br>-halo</p>
+                                                <p>- Kolam Renang <br>- AC <br>- Tempat Duduk</p>
                                             </div>
                                             <div class="col">
-                                                <p>-halo <br>-halo <br>-halo</p>
+                                                <p>- Snack <br>- Toilet <br>- Proyektor</p>
                                             </div>
-                                            <div class="col">
-                                                <p>-halo <br>-halo <br>-halo</p>
-                                            </div>
+                                            
                                         </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-12">
+                                    <div class="col-md-4 col-sm-12">
                                           <div class="row">
-                                            <div class="col-md-4 col-sm-4"><h6>Total Tiket</h6><h3>50</h3></div>
-                                            <div class="col-md-4 col-sm-4"><h6>Tiket Terjual</h6><h3>50</h3></div>
-                                            <div class="col-md-4 col-sm-4"><h6>Tiket Sisa</h6><h3>50</h3></div>
+                                            <div class="col-md-4 col-sm-4"><h6>Total Tiket</h6><h3>{{$unit->jumlah}}</h3></div>
+                                            <div class="col-md-4 col-sm-4"><h6>Terjual</h6><h3>{{$unit->terjual}}</h3></div>
+                                            <div class="col-md-4 col-sm-4"><h6>Sisa</h6><h3>{{$unit->jumlah - $unit->terjual}}</h3></div>
                                         </div>
                                         <div class="row">
                                             <h6>Harga :</h6>
-                                            <h3>Rp. 50.000</h3>
+                                            <h3>Rp. {{number_format($unit->harga)}}</h3>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col">
+                                          <a href="" class="btn btn-success" style="width: 100%">Beli Tiket</a>
+                                          </div>
+                                          <div class="col">
+                                          <a href="" class="btn btn-primary" style="width: 100%">Edit</a>
+                                          </div>
                                         </div>
                                     </div>
                                   
-                                    <div class="col-md-1 ">
+                                    <!-- <div class="col-md-1 ">
                                         <br>
                                         <a href="" class="btn btn-success" style="width: 100%">Beli Tiket</a>
                                         <a href="" class="btn btn-primary" style="width: 100%">Edit</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
-                      
+                        @endforeach
                     </div>
                 </div>
             </div>

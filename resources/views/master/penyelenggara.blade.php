@@ -113,29 +113,6 @@ active
   </div>
 </div>
 <!--  end modal Hapus -->
-<!-- Modal Validasi -->
-<div class="modal fade modal-mini modal-primary" id="modalValidasi" tabindex="-1" role="dialog"
-  aria-labelledby="myDeleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-small">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
-            class="material-icons">clear</i></button>
-      </div>
-      <div class="modal-body text-center">
-        <p id="peringatanValidasi"></p>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
-        <button type="submit" class="btn btn-warning" onclick="$('#formValidasi').trigger('submit')">Ya
-          <div class="ripple-container"></div>
-        </button>
-      </div>
-      <form id="formValidasi" method="POST" action=""></form>
-    </div>
-  </div>
-</div>
-<!--  end modal Validasi -->
 @endsection
 
 @section('content')
