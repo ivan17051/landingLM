@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tiket extends Model
+class Fasilitas extends Model
 {
     use HasFactory;
-    protected $table = 'tiket';
-    public $primaryKey = 'idtiket';
+    protected $table = 'fasilitas';
 
     public $timestamps = false;
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'penayangan',
-        'namaTiket',
-        'deskripsi',
-        'harga',
-        'jumlah',
+        'nama',
+        'icon'
     ];
-
 }

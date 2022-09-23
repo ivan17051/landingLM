@@ -30,6 +30,9 @@ Route::middleware(['auth'])->group(function () {
     Route::apiResource('penyelenggara', App\Http\Controllers\PenyelenggaraController::class)->except('show');
     Route::apiResource('penayangan', App\Http\Controllers\PenayanganController::class)->except('show');
     
+    Route::post('tiket','App\Http\Controllers\PenayanganController@storeTiket')->name('tiket.store');
+    Route::put('tiket','App\Http\Controllers\PenayanganController@updateTiket')->name('tiket.update');
+    
     Route::get('penayangan/all','App\Http\Controllers\PenayanganController@index')->name('penayangan.all');
     Route::get('penayangan/detail/{id}','App\Http\Controllers\PenayanganController@detail')->name('penayangan.detail');
 });

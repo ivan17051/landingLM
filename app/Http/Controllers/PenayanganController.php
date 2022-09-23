@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Penayangan;
 use App\Models\Tiket;
+use App\Models\Fasilitas;
+use App\Models\Promo;
 
 class PenayanganController extends Controller
 {
@@ -18,6 +20,8 @@ class PenayanganController extends Controller
     public function detail($idPenayangan){
         $d['penayangan'] = Penayangan::findOrFail($idPenayangan);
         $d['tiket'] = Tiket::where('penayangan',$idPenayangan)->get();
+        $d['fasilitas'] = Fasilitas::all();
+        $d['promo'] = Promo::all();
         return view('master.detailPenayangan', ['data'=>$d]);
     }
 
@@ -58,6 +62,34 @@ class PenayanganController extends Controller
         }
 
         $this->flashSuccess('Data Penayangan Berhasil Dihapus');
+        return back();
+    }
+
+    public function storeTiket(Request $request){
+        try{
+            $tiket_baru = new Tiket($request->all());
+            $tiket_baru->terjual = 0;
+            $tiket_baru->save();
+        }catch(QueryException $exception){
+            $this->flashError($exception->getMessage());
+            return back();
+        }
+
+        $this->flashSuccess('Data Tiket Berhasil Ditambahkan');
+        return back();
+    }
+
+    public function updateTiket(Request $request){
+        try{
+            $tiket = Tiket::findOrFail($request->idtiket);
+            $tiket->fill($request->all());
+            $tiket->save();
+        }catch(QueryException $exception){
+            $this->flashError($exception->getMessage());
+            return back();
+        }
+        
+        $this->flashSuccess('Data Penayangan Berhasil Diubah');
         return back();
     }
 }
