@@ -33,6 +33,7 @@
             <span class="nav-link-text ms-1">Billing</span>
           </a>
         </li> -->
+        @if(Auth::user()->hakAkses!='guest')
         <a data-bs-toggle="collapse" href="#dataMaster" class="nav-link active" aria-controls="dashboardsExamples"
           role="button" aria-expanded="true">
           <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
@@ -68,6 +69,7 @@
             <span class="nav-link-text ms-1">User</span>
           </a>
         </li>
+        @endif
         <!-- <li class="nav-item">
           <a class="nav-link " href="../pages/sign-in.html">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

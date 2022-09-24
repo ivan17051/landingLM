@@ -9,6 +9,7 @@ class Promo extends Model
 {
     use HasFactory;
     protected $table = 'promo';
+    public $primaryKey = 'idPromo';
 
     public $timestamps = false;
     /**
@@ -33,4 +34,11 @@ class Promo extends Model
         'paroki',
         'tiket',
     ];
+
+    public function tiketRelation(){
+        return $this->belongsTo(Tiket::class, 'tiket', 'idtiket');
+    }
+    public function parokiRelation(){
+        return $this->belongsTo(Paroki::class, 'paroki', 'idparoki');
+    }
 }

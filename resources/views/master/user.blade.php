@@ -83,7 +83,7 @@ active
       <div class="modal-header">
         <h5 class="modal-title">Edit Data User </h5>
       </div>
-      <form class="form-horizontal input-margin-additional" method="POST" action="{{route('user.update',['user'=>0])}}">
+      <form class="form-horizontal input-margin-additional" method="POST" action="{{route('user.update',['user'=>'0'])}}">
         @csrf
         @method('PUT')
         <div class="modal-body">
@@ -92,10 +92,10 @@ active
                 class="text-danger align-text-top">*wajib</small></label>
             <input type="text" class="form-control" id="nama" name="nama" required>
           </div>
-          <input type="hidden" id="email" name="email">
+          <input type="hidden" id="id" name="id">
           <div class="form-group">
             <label for="username" class="bmd-label-floating">Email</label>
-            <input type="email" class="form-control" id="email_show" name="email_show" readonly>
+            <input type="email" class="form-control" id="email" name="email" readonly>
           </div>
           <div class="form-group">
             <label class="bmd-label force-top">Paroki <small class="text-danger align-text-top">*wajib</small></label>
@@ -190,7 +190,7 @@ active
                     <div class="d-flex px-2 py-1">
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="mb-0 text-sm">{{$unit->nama}}</h6>
-                        <p class="text-xs text-secondary mb-0">{{$unit->email_show}}</p>
+                        <p class="text-xs text-secondary mb-0">{{$unit->email}}</p>
                       </div>
                     </div>
                   </td>
@@ -240,8 +240,8 @@ active
     $modal = $('#modalEdit');
     console.log(j);
 
-    $modal.find('[name=email]').val(j['email_show']).change();
-    $modal.find('[name=email_show]').val(j['email_show']).change();
+    $modal.find('[name=id]').val(j['id']).change();
+    $modal.find('[name=email]').val(j['email']).change();
     $modal.find('[name=nama]').val(j['nama']).change();
     $modal.find('[name=paroki]').val(j['paroki']).change().blur();
     $modal.find('[name=penyelenggara]').val(j['penyelenggara']).change().blur();
@@ -257,8 +257,7 @@ active
     var j = myUsers[key];
     $modal = $('#modalDelete');
 
-    // $modal.find('[id=email]').val(j['email_show']).change();
-    $modal.find('form').attr('action', "{{url('/user')}}/" + j['email_show']);
+    $modal.find('form').attr('action', "{{url('/user')}}/" + j['id']);
     $modal.modal('show');
   }
 

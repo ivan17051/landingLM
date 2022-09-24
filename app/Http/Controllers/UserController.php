@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index(){
         $d['user'] = User::with('parokiRelation:idParoki,namaParoki','penyelenggaraRelation:idPenyelenggara,nama')
             ->orderBy('hakAkses')
-            ->get(['nama','email','email_show','noTelp','hakAkses','paroki','penyelenggara','hakAkses']);
+            ->get(['id','nama','email','noTelp','hakAkses','paroki','penyelenggara','hakAkses']);
         $d['paroki'] = Paroki::get(['idParoki','namaParoki']);
         $d['penyelenggara'] = Penyelenggara::get(['idpenyelenggara','nama']);
         
@@ -23,7 +23,6 @@ class UserController extends Controller
     public function store(Request $request){
         try{
             $user_baru = new User($request->all());
-            $user_baru->email_show = $request->email;
             $user_baru->password = Hash::make($request->email);
             $user_baru->save();
         }catch(QueryException $exception){
@@ -35,11 +34,10 @@ class UserController extends Controller
         return back();
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $id){
         try{
-            $user = User::where('email', $request->email)->first();
+            $user = User::findOrFail($request->id);
             $user->fill($request->all());
-            $user->email=$request->email_show;
             $user->save();
         }catch(QueryException $exception){
             $this->flashError($exception->getMessage());
@@ -52,7 +50,7 @@ class UserController extends Controller
 
     public function destroy(Request $request, $email){
         try {
-            $user = User::where('email',$email)->first();
+            $user = User::findOrFail($id);
             $user->delete();
         }catch (QueryException $exception) {
             $this->flashError($exception->getMessage());

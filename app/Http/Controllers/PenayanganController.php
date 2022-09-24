@@ -13,7 +13,6 @@ class PenayanganController extends Controller
     public function index(){
         // $penayangan = Penayangan::get(['idpenayangan','nama','tanggal','alamat']);
         $penayangan = Penayangan::all();
-        // dd($penayangan);
         return view('master.penayangan', ['penayangan'=>$penayangan]);
     }
 
@@ -21,7 +20,8 @@ class PenayanganController extends Controller
         $d['penayangan'] = Penayangan::findOrFail($idPenayangan);
         $d['tiket'] = Tiket::where('penayangan',$idPenayangan)->get();
         $d['fasilitas'] = Fasilitas::all();
-        $d['promo'] = Promo::all();
+        $d['promo'] = Promo::with('tiketRelation:idtiket,namaTiket','parokiRelation:idparoki,namaParoki')->get();
+        
         return view('master.detailPenayangan', ['data'=>$d]);
     }
 
@@ -90,6 +90,62 @@ class PenayanganController extends Controller
         }
         
         $this->flashSuccess('Data Penayangan Berhasil Diubah');
+        return back();
+    }
+
+    public function destroyTiket(Request $request, $id){
+        try {
+            $tiket = Tiket::findOrFail($id);
+            $tiket->delete();
+        }catch (QueryException $exception) {
+            $this->flashError($exception->getMessage());
+            return back();
+        }
+
+        $this->flashSuccess('Data Tiket Berhasil Dihapus');
+        return back();
+    }
+
+    public function storePromo(Request $request){
+        try{
+            $idPromo = Promo::max('idPromo');
+            $promo_baru = new Promo($request->all());
+            $promo_baru->idPromo = $idPromo + 1;
+            $promo_baru->terpakai = 0;
+            $promo_baru->save();
+        }catch(QueryException $exception){
+            $this->flashError($exception->getMessage());
+            return back();
+        }
+
+        $this->flashSuccess('Data Promo Berhasil Ditambahkan');
+        return back();
+    }
+
+    public function updatePromo(Request $request){
+        try{
+            $promo = Promo::findOrFail($request->idPromo);
+            $promo->fill($request->all());
+            $promo->save();
+        }catch(QueryException $exception){
+            $this->flashError($exception->getMessage());
+            return back();
+        }
+        
+        $this->flashSuccess('Data Promo Berhasil Diubah');
+        return back();
+    }
+
+    public function destroyPromo(Request $request, $id){
+        try {
+            $promo = Promo::findOrFail($id);
+            $promo->delete();
+        }catch (QueryException $exception) {
+            $this->flashError($exception->getMessage());
+            return back();
+        }
+
+        $this->flashSuccess('Data Tiket Berhasil Dihapus');
         return back();
     }
 }
