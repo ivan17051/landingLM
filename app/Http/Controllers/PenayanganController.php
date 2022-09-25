@@ -7,13 +7,17 @@ use App\Models\Penayangan;
 use App\Models\Tiket;
 use App\Models\Fasilitas;
 use App\Models\Promo;
+use App\Models\Paroki;
+use App\Models\Penyelenggara;
 
 class PenayanganController extends Controller
 {
     public function index(){
         // $penayangan = Penayangan::get(['idpenayangan','nama','tanggal','alamat']);
-        $penayangan = Penayangan::all();
-        return view('master.penayangan', ['penayangan'=>$penayangan]);
+        $d['paroki'] = Paroki::get(['idparoki','namaParoki']);
+        $d['penayangan'] = Penayangan::all();
+        $d['penyelenggara'] = Penyelenggara::get(['idpenyelenggara','nama']);
+        return view('master.penayangan', ['data'=>$d]);
     }
 
     public function detail($idPenayangan){
@@ -38,9 +42,9 @@ class PenayanganController extends Controller
         return back();
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request){
         try{
-            $penayangan = Penayangan::findOrFail($id);
+            $penayangan = Penayangan::findOrFail($request->idpenayangan);
             $penayangan->fill($request->all());
             $penayangan->save();
         }catch(QueryException $exception){
