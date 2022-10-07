@@ -223,6 +223,7 @@ Penayangan
     </div>
   </div>
   @endforeach
+  @if(in_array(Auth::user()->hakAkses, ['admin','penyelenggara','leadme']))
   <div class="col">
     <div class="card h-100">
       <div class="card-body" style="display: flex;justify-content: center;align-items: center;">
@@ -231,6 +232,7 @@ Penayangan
       </div>
     </div>
   </div>
+  @endif
 </div>
 
 

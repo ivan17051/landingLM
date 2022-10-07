@@ -653,7 +653,7 @@ Detail Penayangan
                       </div>
                       @elseif(Auth::user()->hakAkses=='guest')
                       <div class="col">
-                        <a href="" class="btn btn-success btn-sm" style="width: 100%">Beli Tiket</a>
+                        <a href="{{route('transaksi.show', ['id'=> $unit->idtiket])}}" class="btn btn-success btn-sm" style="width: 100%">Beli Tiket</a>
                       </div>
                       @endif
                     </div>

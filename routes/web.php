@@ -40,7 +40,12 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('penayangan/all','App\Http\Controllers\PenayanganController@index')->name('penayangan.all');
     Route::get('penayangan/detail/{id}','App\Http\Controllers\PenayanganController@detail')->name('penayangan.detail');
+
+    Route::get('transaksi/{id}','App\Http\Controllers\TransaksiController@show')->name('transaksi.show');
+    Route::get('getPromo/{kode}ti{tiket}pa{paroki}', 'App\Http\Controllers\TransaksiController@getPromo');
 });
 Auth::routes();
-
+Route::get('/welcome', function(){
+    return view('welcome');
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -20,5 +20,7 @@ class Tiket extends Model
         'harga',
         'jumlah',
     ];
-
+    public function penayanganRelation(){
+        return $this->belongsTo(Penayangan::class, 'penayangan', 'idpenayangan');
+    }
 }
