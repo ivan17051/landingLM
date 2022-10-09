@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('transaksi/{id}','App\Http\Controllers\TransaksiController@show')->name('transaksi.show');
     Route::get('getPromo/{kode}ti{tiket}pa{paroki}', 'App\Http\Controllers\TransaksiController@getPromo');
+    Route::post('gettoken', 'App\Http\Controllers\TransaksiController@gettoken');
 });
 Auth::routes();
 Route::get('/welcome', function(){

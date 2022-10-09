@@ -31,4 +31,49 @@ class TransaksiController extends Controller
             return back();
         }
     }
+
+    public function gettoken(Request $request){
+        dd($request->all());
+        $ACCESS_TOKEN_URL = 'https://app.sandbox.midtrans.com/snap/v1/transactions';
+        $ORDER_ID = 'ORDER-101-1665324001';
+        $TOTAL = '10000';
+        
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => $ACCESS_TOKEN_URL,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>'{
+        "transaction_details": {
+            "order_id": "'.$ORDER_ID.'",
+            "gross_amount": '.$TOTAL.',
+        }, 
+        "credit_card": {
+            "secure": true
+        },
+        "customer_details": {
+            "first_name": "TEST",
+            "last_name": "MIDTRANSER",
+            "email": "noreply@example.com",
+            "phone": "+628123456",
+        }',
+        CURLOPT_HTTPHEADER => array(
+            'Accept: application/json',
+            'Content-Type: application/json',
+            'Authorization: Basic U0ItTWlkLXNlcnZlci1oaGN6d2dPazhBRmdHSFUyN3kwVF9oOEM6'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
+
+    }
 }
