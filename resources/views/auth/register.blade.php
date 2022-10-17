@@ -10,205 +10,89 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link href="{{asset('public/assets/css/material-dashboard.css?v=2.2.2')}}" rel="stylesheet" />
+  <link id="pagestyle" href="{{asset('public/assets/css/argon-dashboard.css?v=2.0.4')}}" rel="stylesheet" />
   
 </head>
 
-<body class="off-canvas-sidebar">
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
-    <div class="container">
-      <div class="navbar-wrapper">
-        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg2.png')}}" style="height:40px;" alt=""></a>
-        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/images/lg1.png')}}" style="height:35px;margin-left:-20px;" alt=""></a>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav">
-          <!-- <li class="nav-item">
-            <a href="../dashboard.html" class="nav-link">
-              <i class="material-icons">dashboard</i>
-              Dashboard
-            </a>
-          </li> -->
-          <li class="nav-item active">
-            <a href="{{url('/register')}}" class="nav-link">
-              <i class="material-icons">person_add</i>
-              Daftar
-            </a>
-          </li>
-          <li class="nav-item  ">
-            <a href="{{url('/login')}}" class="nav-link">
-              <i class="material-icons">fingerprint</i>
-              Login
-            </a>
-          </li>
-          <!-- <li class="nav-item ">
-            <a href="../pages/lock.html" class="nav-link">
-              <i class="material-icons">lock_open</i>
-              Lock
-            </a>
-          </li> -->
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- End Navbar -->
-  <div class="wrapper wrapper-full-page">
-    <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); background-size: cover; background-position: bottom center;">
-      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-            <form method="POST" action="">
-              @csrf
-              <div class="card card-login card-hidden">
-                <div class="card-header card-header-info text-center">
-                  <h4 class="card-title">Register</h4>
-                  <div class="social-line">
-                    <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                      <i class="fa fa-facebook-square"></i>
-                    </a>
-                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                      <i class="fa fa-google-plus"></i>
-                    </a> -->
-                  </div>
+<body class="">
+<main class="main-content  mt-0">
+    <section>
+      <div class="page-header min-vh-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-8 d-flex flex-column mx-lg-0 mx-auto">
+              <div class="card card-plain">
+                <div class="card-header pb-0 text-start">
+                  <a class="" href="{{url('')}}">
+                    <img src="{{asset('public/assets/img/lg2.png')}}" class="navbar-brand-img h-100" style="max-height:50px;" alt="main_logo">
+                    <img src="{{asset('public/assets/img/lg1.png')}}" class="navbar-brand-img h-100" style="max-height:50px;"alt="main_logo">
+                  </a><br><br>
+                  <h4 class="font-weight-bolder">Daftar</h4>
+                  <p class="mb-0">Silahkan Masukkan Data Yang Diperlukan Untuk Mendaftar</p>
                 </div>
-                <div class="card-body ">
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">person_outline</i>
-                        </span>
+                
+                <div class="card-body">
+                  <form role="form" method="POST" action="{{route('register')}}">
+                    @csrf
+                    <div class="row mb-3">
+                      <div class="col-md-7">
+                      <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" aria-label="Nama Langkap" value="{{ old('nama') }}" required>
                       </div>
-                      <div style="flex:1;">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Nama..." autofocus>
-                        @error('name')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                        @enderror
+                      <div class="col-md-5">
+                      <input type="text" class="form-control" name="nohp" placeholder="Nomor Telepon" aria-label="No Telepon" value="{{ old('nohp') }}" required>
                       </div>
                     </div>
-                  </span>
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">mail_outline</i>
-                        </span>
-                      </div>
-                      <div style="flex:1;">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email...">
-                        @if ($errors->has('email'))
-                        <label class="error" for="email" style="font-size: 0.8rem;color: #f44336;margin-top: 4px;">{{ $errors->first('email') }}</label>
-                        @endif
-                      </div>
+                    <div class="mb-3">
+                      <select class="form-control" name="paroki" id="paroki" value="{{ old('paroki') }}" required>
+                        <option value="" selected disabled>Paroki</option>
+                        @foreach($paroki as $unit)
+                        <option value="{{$unit->idparoki}}">{{$unit->namaParoki}}</option>
+                        @endforeach
+                      </select>
+                      <!-- <input type="text" class="form-control" placeholder="Asal Paroki" aria-label="Asal Paroki" required> -->
                     </div>
-                  </span>
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">lock_outline</i>
-                        </span>
-                      </div>
-                      <div style="flex:1;">
-                        <input id="password" type="password" class="form-control" placeholder="Password..." name="password" required>
-                        @if ($errors->has('password'))
-                        <label class="error" for="password" style="font-size: 0.8rem;color: #f44336;margin-top: 4px;">{{ $errors->first('password') }}</label>
-                        @endif
-                      </div>
+                    <div class="mb-3">
+                      <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" placeholder="Email" aria-label="Email" value="{{ old('email') }}" required>
+                      @error('email')
+                      <label class="error" for="password" style="font-size: 0.8rem;color: #f44336;margin-top: 4px;">{{ $message }}</label>
+                      @enderror
                     </div>
-                  </span>
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">lock_outline</i>
-                        </span>
-                      </div>
-                      <div style="flex:1;">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Ulangi Password...">
-                        @if ($errors->has('password'))
-                        <label class="error" for="password" style="font-size: 0.8rem;color: #f44336;margin-top: 4px;">{{ $errors->first('password') }}</label>
-                        @endif
-                      </div>
+                    <div class="mb-3">
+                      <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : ''}}" placeholder="Password" aria-label="Password" required>
+                      @error('password')
+                      <label class="error" for="password" style="font-size: 0.8rem;color: #f44336;margin-top: 4px;">{{ $message }}</label>
+                      @enderror
                     </div>
-                  </span>
+                    <div class="mb-3">
+                      <input type="password" name="password_confirmation" class="form-control {{ $errors->has('password') ? 'is-invalid' : ''}}" placeholder="Ulangi Password" aria-label="Ulangi Password" required>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Daftar</button>
+                    </div>
+                  </form>
                 </div>
-                <div class="card-footer justify-content-center">
-                  <button type="submit" class="btn btn-info btn-link btn-lg">REGISTER</button>
+                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                  <p class="mb-4 text-sm mx-auto">
+                    Sudah Punya Akun ?
+                    <a href="{{url('/login')}}" class="text-primary text-gradient font-weight-bold">Klik Disini Untuk Masuk</a>
+                  </p>
                 </div>
               </div>
-            </form>
+            </div>
+            <div class="col-5 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
+              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
+          background-size: cover;">
+                <span class="mask bg-gradient-primary opacity-6"></span>
+                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"</h4>
+                <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <footer class="footer">
-        <div class="container">
-          <!-- <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="https://creative-tim.com/presentation">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav> -->
-          <div class="copyright">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by Lead Me Film.
-            <!-- <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web. -->
-          </div>
-        </div>
-      </footer>
-    </div>
-  </div>
-  <!--   Core JS Files   -->
-  <script src="{{asset('public/assets/js/core/jquery.min.js')}}"></script>
-  <script src="{{asset('public/assets/js/core/popper.min.js')}}"></script>
-  <script src="{{asset('public/assets/js/core/bootstrap-material-design.min.js')}}"></script>
-  <script src="{{asset('public/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-  
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{asset('public/assets/js/material-dashboard.js?v=2.2.2')}}" type="text/javascript"></script>
-  
-  <script>
-    $(document).ready(function() {
-      md.checkFullPageBackgroundImage();
-      setTimeout(function() {
-        // after 1000 ms we add the class animated to the login/register card
-        $('.card').removeClass('card-hidden');
-      }, 700);
-    });
-  </script>
+    </section>
+  </main>
+
 </body>
 
 </html>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Paroki;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -23,6 +24,11 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    public function showRegistrationForm(){
+        $paroki = Paroki::get(['idparoki','namaParoki']);
+        return view('auth.register', ['paroki'=>$paroki]);
+    }
 
     /**
      * Where to redirect users after registration.
@@ -50,8 +56,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nama' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:user'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -65,11 +71,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'nama' => $data['name'],
+            'nama' => $data['nama'],
             'email' => $data['email'],
+            'noTelp' => $data['nohp'],
             'password' => Hash::make($data['password']),
             'hakAkses' => 'guest',
-            'idParoki' => 1,
+            'paroki' => $data['paroki'],
         ]);
     }
 }
