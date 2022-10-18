@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/leaq3224/public_html/leadme
+    - /bin/cp -R * $DEPLOYPATH

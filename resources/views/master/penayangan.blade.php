@@ -276,6 +276,8 @@ Penayangan
     $modal.find('form').attr('action', "{{url('/penayangan')}}/" + j['idpenayangan']);
     // $modal.modal('show');
   }
-
+  $(document).ready(function() {
+    $('.select2').select2();
+  });
 </script>
 @endsection
