@@ -6,17 +6,13 @@ Author URL: http://w3layouts.com
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/png" href="{{asset('assets/images/lg3.png')}}">
-  <title>Lead Me | Home</title>
-  <!-- web fonts -->
+  <link rel="icon" type="image/png" href="{{asset('assets/images/lg4.png')}}">
+  <title>Lead Me</title>
   <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('assets/fonts/icofont/css/icofont.min.css')}}">
-  <!-- //web fonts -->
-  <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('assets/css/style-starter.css?version=$FILE_TIME')}}">
 </head>
 
@@ -42,26 +38,40 @@ Author URL: http://w3layouts.com
               <a class="nav-link" href="{{url('/aboutus')}}">Sinopsis</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/lokasi')}}">Jadwal Penayangan</a>
+              <a class="nav-link" href="{{url('/#jadwal')}}">Jadwal Penayangan</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/kontak')}}">Merchandise</a>
+              <a class="nav-link" href="{{url('/#merch')}}">Merchandise</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/kontak')}}">Dibalik Layar</a>
+              <a class="nav-link" href="{{url('/#bts')}}">Dibalik Layar</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/kontak')}}">Kontak</a>
+              <a class="nav-link" href="{{url('/cektiket')}}">Cek Tiket</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url('/kontak')}}">Akun</a>
-            </li>
+
             @auth
+            @if(Auth::user()->hakAkses =='guest')
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/dashboard')}}">Dashboard</a>
+              <a class="btn btn-outline-light" href="{{url('/akun')}}">Akun</a>
+            </li>
+            @else
+            <li class="nav-item">
+              <a class="btn btn-outline-light" href="{{url('/dashboard')}}">Dashboard</a>
+            </li>
+            @endif
+            <li class="nav-item">
+              <a class="btn btn-outline-light" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
             </li>
             @endauth
           </ul>

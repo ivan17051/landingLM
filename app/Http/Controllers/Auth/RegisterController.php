@@ -79,4 +79,12 @@ class RegisterController extends Controller
             'paroki' => $data['paroki'],
         ]);
     }
+
+    protected function redirectTo()
+    {
+        if (auth()->user()->hakAkses == 'guest') {
+            return '/akun';
+        }
+        return '/dashboard';
+    }
 }

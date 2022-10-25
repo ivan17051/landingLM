@@ -19,7 +19,7 @@ Route::get('/', [LandingController::class, 'index']);
 Route::get('/jadwal', [LandingController::class, 'jadwal']);
 Route::get('/login', [LandingController::class, 'login']);
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->middleware('admin')->group(function () {
 
     Route::get('/dashboard', function(){
         return view('dashboard');
@@ -44,7 +44,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('transaksi/{id}','App\Http\Controllers\TransaksiController@show')->name('transaksi.show');
     Route::get('getPromo/{kode}ti{tiket}pa{paroki}', 'App\Http\Controllers\TransaksiController@getPromo');
     Route::post('gettoken', 'App\Http\Controllers\TransaksiController@gettoken');
+
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('akun/','App\Http\Controllers\TamuController@index')->name('tamu.akun');
+});
+
 Auth::routes();
 Route::get('/welcome', function(){
     return view('welcome');

@@ -33,6 +33,14 @@ class LoginController extends Controller
      *
      * @return void
      */
+    protected function redirectTo()
+    {
+        if (auth()->user()->hakAkses == 'guest') {
+            return '/akun';
+        }
+        return '/dashboard';
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

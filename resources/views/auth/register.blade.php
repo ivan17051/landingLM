@@ -19,8 +19,7 @@
     <section>
       <div class="page-header min-vh-100">
         <div class="container">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-8 d-flex flex-column mx-lg-0 mx-auto">
+        
               <div class="card card-plain">
                 <div class="card-header pb-0 text-start">
                   <a class="" href="{{url('')}}">
@@ -34,13 +33,11 @@
                 <div class="card-body">
                   <form role="form" method="POST" action="{{route('register')}}">
                     @csrf
-                    <div class="row mb-3">
-                      <div class="col-md-7">
-                      <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" aria-label="Nama Langkap" value="{{ old('nama') }}" required>
-                      </div>
-                      <div class="col-md-5">
-                      <input type="text" class="form-control" name="nohp" placeholder="Nomor Telepon" aria-label="No Telepon" value="{{ old('nohp') }}" required>
-                      </div>
+                    <div class="mb-3">
+                      <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" aria-label="Nama Lengkap" value="{{ old('nama') }}" required>               
+                    </div>
+                     <div class="mb-3">
+                      <input type="text" class="form-control" name="nohp" placeholder="Nomor Telepon (Opsional)" aria-label="No Telepon" value="{{ old('nohp') }}" >
                     </div>
                     <div class="mb-3">
                       <select class="form-control" name="paroki" id="paroki" value="{{ old('paroki') }}" required>
@@ -76,18 +73,10 @@
                     Sudah Punya Akun ?
                     <a href="{{url('/login')}}" class="text-primary text-gradient font-weight-bold">Klik Disini Untuk Masuk</a>
                   </p>
+                   <a href="{{url('/')}}" class="btn btn-lg btn-dark btn-lg w-100 mt-4 mb-0">Kembali Ke Halaman Utama</a>
                 </div>
               </div>
-            </div>
-            <div class="col-5 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
-          background-size: cover;">
-                <span class="mask bg-gradient-primary opacity-6"></span>
-                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"</h4>
-                <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
-              </div>
-            </div>
-          </div>
+        
         </div>
       </div>
     </section>

@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Penayangan;
+use App\Models\Penyelenggara;
+use App\Models\Tiket;
+use App\Models\Foto;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class LandingController extends Controller
 {
     public function index(){
-        return view('public.home');
+        $penayangan = Penayangan::whereRaw('tanggal > DATE_ADD(NOW(), INTERVAL 1 HOUR)')->orderByDesc('tanggal')->get();
+        return view('public.home')->with(compact('penayangan'));
+        
     }
 
     public function jadwal(){
@@ -16,5 +24,26 @@ class LandingController extends Controller
 
     public function login(){
         return view('auth.login');
+    }
+
+    public static function penyelenggara($id)
+    {
+        return Penyelenggara::where('idpenyelenggara',$id)->get();
+    }
+
+    public static function foto($id)
+    {
+        return Foto::where('penayangan',$id)->get();
+    }
+
+    public static function tiket($id)
+    {
+        $tiket = Tiket::where('penayangan',$id)->get();
+        foreach ($tiket as $t)
+        {
+            $fasilitas = DB::select('select * FROM fasilitastiket ft inner join fasilitas f on ft.fasilitas_idfasilitas = f.idfasilitas where ft.tiket_idtiket = \''.$t->idtiket.'\';');
+            $t->fasilitas = $fasilitas;
+        }
+        return $tiket;
     }
 }
