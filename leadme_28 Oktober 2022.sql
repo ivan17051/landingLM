@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Agu 2022 pada 18.04
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.1
+-- Waktu pembuatan: 27 Okt 2022 pada 20.54
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,6 +58,14 @@ CREATE TABLE `fasilitastiket` (
   `tiket_idtiket` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `fasilitastiket`
+--
+
+INSERT INTO `fasilitastiket` (`fasilitas_idfasilitas`, `tiket_idtiket`) VALUES
+(1, 1),
+(8, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -69,6 +77,13 @@ CREATE TABLE `foto` (
   `namafile` varchar(45) DEFAULT NULL,
   `penayangan` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `foto`
+--
+
+INSERT INTO `foto` (`idfoto`, `namafile`, `penayangan`) VALUES
+(1, 'c1.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +148,8 @@ INSERT INTO `paroki` (`idparoki`, `namaParoki`, `kevikepan`, `keuskupan`) VALUES
 (43, 'Santo Petrus Dan Paulus Wlingi', 'Blitar', 'Surabaya'),
 (44, 'Santa Maria Dengan Tidak Bernoda Asal Tulungagung', 'Blitar', 'Surabaya'),
 (45, 'Santo Fransiskus Asisi Resapombo', 'Blitar', 'Surabaya'),
-(46, 'Santo Fransiskus Asisi Mojorejo', 'Blitar', 'Surabaya');
+(46, 'Santo Fransiskus Asisi Mojorejo', 'Blitar', 'Surabaya'),
+(48, 'TIM LEADME', 'Surabaya Utara', 'Surabaya');
 
 -- --------------------------------------------------------
 
@@ -173,15 +189,16 @@ CREATE TABLE `penyelenggara` (
   `noTelpContactPerson` varchar(45) DEFAULT NULL,
   `saldoPenyelenggara` int(11) DEFAULT NULL,
   `saldoLeadme` int(11) DEFAULT NULL,
-  `hpptiket` int(11) DEFAULT NULL
+  `hpptiket` int(11) DEFAULT NULL,
+  `logo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `penyelenggara`
 --
 
-INSERT INTO `penyelenggara` (`idpenyelenggara`, `nama`, `namaContactPerson`, `noTelpContactPerson`, `saldoPenyelenggara`, `saldoLeadme`, `hpptiket`) VALUES
-(1, 'OMK RPD', 'Bagas', '09123456789', 0, 0, 15000);
+INSERT INTO `penyelenggara` (`idpenyelenggara`, `nama`, `namaContactPerson`, `noTelpContactPerson`, `saldoPenyelenggara`, `saldoLeadme`, `hpptiket`, `logo`) VALUES
+(1, 'OMK RPD', 'Bagas', '09123456789', 0, 0, 15000, 'lg2.png');
 
 -- --------------------------------------------------------
 
@@ -248,6 +265,7 @@ CREATE TABLE `tiket` (
   `harga` int(11) DEFAULT NULL,
   `jumlah` int(11) DEFAULT NULL,
   `terjual` int(11) DEFAULT NULL,
+  `pending` int(6) NOT NULL DEFAULT 0,
   `deskripsi` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -255,9 +273,9 @@ CREATE TABLE `tiket` (
 -- Dumping data untuk tabel `tiket`
 --
 
-INSERT INTO `tiket` (`idtiket`, `penayangan`, `namaTiket`, `harga`, `jumlah`, `terjual`, `deskripsi`) VALUES
-(1, 1, 'Bronze', 15000, 100, 0, 'Tiket Paling Murah'),
-(2, 1, 'Gold', 25000, 25, 0, 'Tiket Termahal');
+INSERT INTO `tiket` (`idtiket`, `penayangan`, `namaTiket`, `harga`, `jumlah`, `terjual`, `pending`, `deskripsi`) VALUES
+(1, 1, 'Bronze', 15000, 100, 0, 5, 'Tiket Paling Murah'),
+(2, 1, 'Gold', 25000, 0, 0, 0, 'Tiket Termahal');
 
 -- --------------------------------------------------------
 
@@ -279,14 +297,32 @@ CREATE TABLE `tiketdetail` (
 --
 
 CREATE TABLE `tiketfinal` (
-  `idtiketFinal` varchar(20) NOT NULL,
-  `transaksi` varchar(20) NOT NULL,
-  `tanggalWaktuCetak` datetime DEFAULT NULL,
+  `idtiketFinal` int(20) NOT NULL,
+  `tiketOnline` varchar(60) DEFAULT NULL,
+  `transaksi` varchar(20) DEFAULT NULL,
+  `namaTiket` varchar(45) DEFAULT NULL,
+  `harga` int(30) DEFAULT NULL,
+  `tanggalWaktuOffline` datetime DEFAULT NULL,
+  `tanggalWaktuOnline` datetime DEFAULT NULL,
   `tanggalKehadiran` datetime DEFAULT NULL,
-  `penayangan` int(11) NOT NULL,
+  `penayangan` int(11) DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `qrCode` varchar(200) DEFAULT NULL
+  `qrCode` varchar(200) DEFAULT NULL,
+  `warna` varchar(20) DEFAULT NULL,
+  `tiketOffline` varchar(20) DEFAULT NULL,
+  `qrOffline` varchar(200) DEFAULT NULL,
+  `pemesan` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `noTelp` varchar(50) DEFAULT NULL,
+  `paroki` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `tiketfinal`
+--
+
+INSERT INTO `tiketfinal` (`idtiketFinal`, `tiketOnline`, `transaksi`, `namaTiket`, `harga`, `tanggalWaktuOffline`, `tanggalWaktuOnline`, `tanggalKehadiran`, `penayangan`, `status`, `qrCode`, `warna`, `tiketOffline`, `qrOffline`, `pemesan`, `email`, `noTelp`, `paroki`) VALUES
+(1, 'BA10001', '27102022085047', 'Bronze', 15000, '2022-10-13 22:06:39', '2022-10-05 22:06:39', NULL, 1, NULL, '32432432554563445345345', 'BIRU', 'AE1000000000', '343242343242334242', 'Stefanus Shanny K', '21stefsk@gmail.com', '9888282212', 1);
 
 -- --------------------------------------------------------
 
@@ -297,15 +333,34 @@ CREATE TABLE `tiketfinal` (
 CREATE TABLE `transaksi` (
   `idtransaksi` varchar(20) NOT NULL,
   `paymentLinkId` varchar(100) DEFAULT NULL,
-  `tanggalWaktu` datetime DEFAULT NULL,
+  `tanggalWaktu` datetime DEFAULT current_timestamp(),
+  `batasBayar` datetime DEFAULT NULL,
+  `waktuBayar` datetime DEFAULT NULL,
+  `harga` int(11) DEFAULT NULL,
   `donasi` int(11) DEFAULT NULL,
   `diskon` int(11) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `user` varchar(100) NOT NULL,
+  `user` varchar(100) DEFAULT NULL,
   `metode` varchar(45) DEFAULT NULL,
-  `bookingCode` varchar(45) DEFAULT NULL
+  `tiket` int(5) NOT NULL DEFAULT 0,
+  `jumlah` int(5) NOT NULL DEFAULT 0,
+  `pembeli` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`idtransaksi`, `paymentLinkId`, `tanggalWaktu`, `batasBayar`, `waktuBayar`, `harga`, `donasi`, `diskon`, `total`, `status`, `user`, `metode`, `tiket`, `jumlah`, `pembeli`) VALUES
+('27102022085047', NULL, '2022-10-27 15:50:47', NULL, NULL, NULL, 0, NULL, 75000, 'BELUM DIBAYAR', NULL, NULL, 1, 5, '4'),
+('27102022085509', NULL, '2022-10-27 15:55:09', NULL, NULL, NULL, 0, NULL, 75000, 'BELUM DIBAYAR', NULL, NULL, 1, 5, '4'),
+('27102022091035', NULL, '2022-10-27 16:10:35', '2022-10-27 11:10:35', NULL, NULL, 0, NULL, 75000, 'BELUM DIBAYAR', NULL, NULL, 1, 5, '4'),
+('27102022091134', NULL, '2022-10-27 16:11:34', '2022-10-27 11:11:34', NULL, NULL, 0, NULL, 75000, 'BELUM DIBAYAR', NULL, NULL, 1, 5, '4'),
+('27102022091314', NULL, '2022-10-27 16:13:14', '2022-10-27 11:13:14', NULL, NULL, 0, NULL, 75000, 'BELUM DIBAYAR', NULL, NULL, 1, 5, '4'),
+('27102022091335', NULL, '2022-10-27 16:13:35', '2022-10-27 11:13:35', NULL, NULL, 0, NULL, 75000, 'BELUM DIBAYAR', NULL, NULL, 1, 5, '4'),
+('27102022091346', NULL, '2022-10-27 16:13:46', '2022-10-27 11:13:46', NULL, NULL, 0, NULL, 75000, 'BELUM DIBAYAR', NULL, NULL, 1, 5, '4'),
+('27102022091457', NULL, '2022-10-27 16:14:57', '2022-10-27 11:14:57', NULL, NULL, 0, NULL, 75000, 'BELUM DIBAYAR', NULL, NULL, 1, 5, '4');
 
 -- --------------------------------------------------------
 
@@ -314,6 +369,7 @@ CREATE TABLE `transaksi` (
 --
 
 CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(200) DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
@@ -327,9 +383,11 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`email`, `password`, `nama`, `noTelp`, `hakAkses`, `paroki`, `penyelenggara`) VALUES
-('admin@leadme.com', '$2y$10$59JL9DCF8Kbn99rfja33zeNb/D2ZAr09t.EFysTsVuRwSyIGILFQm', 'Admin', NULL, 'admin', 1, NULL),
-('ivan@mail.com', '$2y$10$.yKUd/gM4XOCmoUivdG63uChu5B1SnOoRt1wJ.YyY2joArmwlo8v6', 'Ivan', NULL, 'guest', 2, NULL);
+INSERT INTO `user` (`id`, `email`, `password`, `nama`, `noTelp`, `hakAkses`, `paroki`, `penyelenggara`) VALUES
+(1, 'admin@leadme.com', '$2y$10$59JL9DCF8Kbn99rfja33zeNb/D2ZAr09t.EFysTsVuRwSyIGILFQm', 'Admin', NULL, 'admin', 1, NULL),
+(2, 'ivan@mail.com', '$2y$10$.yKUd/gM4XOCmoUivdG63uChu5B1SnOoRt1wJ.YyY2joArmwlo8v6', 'Ivan', NULL, 'guest', 2, 1),
+(3, 'ivan2@mail.com', '$2y$10$c1D0HeQucdETbcVkr2GtR.5lSnSBBJMyB/zM/FnUKIwpBln0uDPd.', 'Ivan Penyelenggara', NULL, 'penyelenggara', 1, 1),
+(4, '21stefsk@gmail.com', '$2y$10$3kBJgXn5YrZ7bn8XlcZOpuzE0zN1jm.ZMLXiObuBJ0gxOgCJqXfCG', 'Steranus Shanny K', '0812345678', 'guest', 3, NULL);
 
 --
 -- Indexes for dumped tables
@@ -435,7 +493,8 @@ ALTER TABLE `transaksi`
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`email`),
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `fk_user_paroki1_idx` (`paroki`),
   ADD KEY `fk_user_penyelenggara1_idx` (`penyelenggara`);
 
@@ -453,13 +512,13 @@ ALTER TABLE `fasilitas`
 -- AUTO_INCREMENT untuk tabel `foto`
 --
 ALTER TABLE `foto`
-  MODIFY `idfoto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idfoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `paroki`
 --
 ALTER TABLE `paroki`
-  MODIFY `idparoki` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `idparoki` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT untuk tabel `penayangan`
@@ -478,6 +537,18 @@ ALTER TABLE `penyelenggara`
 --
 ALTER TABLE `tiket`
   MODIFY `idtiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `tiketfinal`
+--
+ALTER TABLE `tiketfinal`
+  MODIFY `idtiketFinal` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -542,14 +613,7 @@ ALTER TABLE `tiketdetail`
 -- Ketidakleluasaan untuk tabel `tiketfinal`
 --
 ALTER TABLE `tiketfinal`
-  ADD CONSTRAINT `fk_tiketFinal_penayangan1` FOREIGN KEY (`penayangan`) REFERENCES `penayangan` (`idpenayangan`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tiketFinal_transaksi1` FOREIGN KEY (`transaksi`) REFERENCES `transaksi` (`idtransaksi`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Ketidakleluasaan untuk tabel `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD CONSTRAINT `fk_transaksi_user1` FOREIGN KEY (`user`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tiketFinal_penayangan1` FOREIGN KEY (`penayangan`) REFERENCES `penayangan` (`idpenayangan`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ketidakleluasaan untuk tabel `user`

@@ -3,17 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Auth::routes();
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/jadwal', [LandingController::class, 'jadwal']);
@@ -49,6 +38,8 @@ Route::middleware(['auth'])->middleware('admin')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('akun/','App\Http\Controllers\TamuController@index')->name('tamu.akun');
+    Route::post('checkout1/','App\Http\Controllers\TamuController@checkout1')->name('tamu.checkout1');
+    Route::post('checkout2/','App\Http\Controllers\TamuController@checkout2')->name('tamu.checkout1');
 });
 
 Auth::routes();

@@ -88,17 +88,19 @@
 
       <div class="aboutgrids row">
         <div class="col-lg-6 aboutgrid2">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/vfsAk9avjK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/vfsAk9avjK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-lg-6 aboutgrid1 mt-lg-0 mt-4 pl-lg-5">
           <h4>About LeadMe</h4>
-          <h6>Durasi : 180 Menit</h6>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, velit recusandae eum necessitatibus
-            blanditiis porro cum, facere qui impedit dolor doloribus quis reiciendis ullam repellendus.Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quae, velit recusandae eum </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, velit recusandae eum necessitatibus
-            blanditiis porro cum, facere qui impedit dolor doloribus quis reiciendis ullam repellendus.Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Quae, velit recusandae eum </p>
+          <h6>Durasi : TBA</h6>
+          <p>Dera, seorang remaja yang berasal dari keluarga sederhana berlatar belakang Ras, Suku, dan Agama yang berbeda. Seiring berjalannya waktu dia merasakan panggilan untuk menjadi seorang Katolik. 
+            Setelah Dera dibaptis, Jonas ketua OMK Paroki menghampiri Dera. Disini Jonas mengajak Dera untuk aktif di kegiatan Orang Muda Katolik.
+          Jonas memperkenalkan Dera dengan anak omk lain seperti Gracia, Anton, Tessa, Tasya, Yohanes, Jeremy. Dera makin semangat menjadi anggota omk yang aktif dan menjadi lebih dekat dengan saudara seimannya.
+          Sampai tibalah di rapat acara rutin tahunan OMK Sumpah pemuda.</p>
+
+          <p>Dalam menjalani proses persiapan Sumpah Pemuda itulah mental, Iman, Pelayanan, dan Professionalisme sebagai Orang Muda Katolik diiuji hingga menemukan arti dari Pimpinan Roh Kudus dalam setiap langkah mereka.</p>
+
+          <p>Mari ! tonton dan temukan arti Pimpinan Roh Kudus bersama Dera, Jonas, dan kawan-kawan OMK Kevikepan Surabaya Utara. Bersama-sama.</p>
           <table>
             <!-- logo OMK 7 Paroki Link Ke ig masing2 + 1 logo vitara  -->
           <tr>
@@ -209,17 +211,20 @@
                   @foreach($tkt as $key=>$t)
                   <div class="col-lg-4 col-md-12 col-sm-12 card card-body" >
                     <div>
-                      <form>
+                      <form method="post" action="{{url('checkout1')}}">
+                        @csrf
                       <h5>{{$t->namaTiket}}</h5>
+                      <h5>{{date("j F Y H:i",strtotime($p->tanggal))}}</h5>
                       <h6>{{$t->deskripsi}}</h6><br>
                       @foreach($t->fasilitas as $f)
                       <h6>- {{$f->nama}}</h6>
                       @endforeach<br>
                       <h4>Rp. {{number_format($t->harga)}}</h4><br>
                       <h6> Jumlah Tiket</h6>
-                      <input id="tiket{{$t->idtiket}}" onchange="cek({{$t->idtiket}},{{$t->jumlah - $t->terjual}})" style="width:80%; margin-bottom: 5px;" type="number" min="0" value="0" name="jumlah"
-                      max="{{$t->terjual == 0 && $t->jumlah == 0}}"> / 
-                      {{$t->jumlah - $t->terjual}}
+                      <input type="hidden" name="idtiket" value="{{$t->idtiket}}">
+                      <input id="tiket{{$t->idtiket}}" onchange="cek({{$t->idtiket}},{{$t->jumlah - $t->terjual - $t->pending}})" style="width:80%; margin-bottom: 5px;" type="number" min="0" value="0" name="jumlah"
+                      max="{{$t->jumlah - $t->terjual - $t->pending}}"> / 
+                      {{$t->jumlah - $t->terjual - $t->pending}}
                       @if(!Auth::check())
                       <h5 class="text-danger">Silahkan Login Terlebih Dahulu</h5>
                       @elseif($t->terjual == 0 && $t->jumlah == 0)

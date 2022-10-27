@@ -84,6 +84,26 @@ Author URL: http://w3layouts.com
     </nav>
   </section>
 
+  <section>
+    @if($errors->any())
+
+    <div class="modal" tabindex="-1" role="dialog" id="errormodal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <br>
+            <h4>{{$errors->first()}}</h4>
+            <br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+    @endif
+  </section>
+
   @yield('content')
 
   <!-- grids block 5 -->
@@ -216,6 +236,12 @@ Author URL: http://w3layouts.com
   <script src="assets/js/owl.carousel.js"></script>
 
   <!-- script for -->
+  <script type="text/javascript">
+    $(window).on('load', function() {
+        $('#errormodal').modal('show');
+    });
+</script>
+
   <script>
     $(document).ready(function () {
       $('.owl-one').owlCarousel({

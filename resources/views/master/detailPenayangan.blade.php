@@ -468,7 +468,7 @@ Detail Penayangan
 </div>
 <!-- end row -->
 <br>
-@if(Auth::user()->hakAkses=='admin')
+@if(Auth::user()->hakAkses=='admin') <!-- INi kayanya dari penyelenggara bisa liat ya gpp -->
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -480,7 +480,7 @@ Detail Penayangan
                 <div class="row">
                   <div class="col-8">
                     <div class="numbers">
-                      <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                      <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Penjualan</p>
                       <h5 class="font-weight-bolder">
                         $53,000
                       </h5>
@@ -505,7 +505,7 @@ Detail Penayangan
                 <div class="row">
                   <div class="col-8">
                     <div class="numbers">
-                      <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                      <p class="text-sm mb-0 text-uppercase font-weight-bold">Saldo Penyelenggara</p>
                       <h5 class="font-weight-bolder">
                         2,300
                       </h5>
@@ -582,7 +582,29 @@ Detail Penayangan
   </div>
 </div>
 @endif
+@if(in_array(Auth::user()->hakAkses, ['admin', 'leadme', 'penyelenggara']))
 <br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <a href=""><button class="btn btn-success" style="width: 100%">Jual Tiket</button></a>
+          </div>
+          <div class="col">
+            <a href=""><button class="btn btn-warning" style="width: 100%">Penukaran Tiket</button></a>
+          </div>
+          <div class="col">
+            <a href=""><button class="btn btn-dark" style="width: 100%">Absensi</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endif
+<br>          
 <div class="row">
   <div class="col-md-12">
     <div class="card">
