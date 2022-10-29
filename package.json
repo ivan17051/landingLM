@@ -17,6 +17,7 @@
         "resolve-url-loader": "^3.1.0"
     },
     "dependencies": {
+        "html2canvas": "^1.4.1",
         "select2": "^4.1.0-rc.0"
     }
 }

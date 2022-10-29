@@ -88,7 +88,7 @@
 
       <div class="aboutgrids row">
         <div class="col-lg-6 aboutgrid2">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/vfsAk9avjK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="315" src="https://www.instagram.com/reel/CkNn8WGjSa4/?utm_source=ig_web_button_share_sheet" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-lg-6 aboutgrid1 mt-lg-0 mt-4 pl-lg-5">
           <h4>About LeadMe</h4>
@@ -193,6 +193,7 @@
                  <div class="col-lg-9 col-sm-12">
                     <img style="width: 50px; margin-top: 5px;" class="card-img" src="{{asset('assets/img/'.$plgr[0]->logo)}}">
                     <h5 class="card-title">{{$p->nama}} | {{$plgr[0]->nama}}</h5>
+                    <h5>Paroki {{$p->parokis[0]->namaParoki}}</h5>
                     <h6>{{$p->alamat}}</h6>
                     <br>
                   <p class="card-text">{{$p->keterangan}}</p>
@@ -245,6 +246,7 @@
             </div>
           </div>
         </div>
+        <br>
 @endforeach
 
       </div>
@@ -274,50 +276,15 @@
                     <div class="imgTitle">
                       <img src="assets/images/c1.jpg" class="img-responsive" alt="" />
                     </div>
-                    <h6 class="mt-3">Steve Smith</h6>
-                    <p class="">Romo Paroki St Marinus Yohanes Surabaya</p>
+                    <h6 class="mt-3">TIM LEADME</h6>
+                    <p class=""></p>
                     <h5>"Film Leadme Sangat Menarik Jangan Lupa Ditonton" </h5>
 
                   </div>
                 </div>
               </div>
             </div>
-            <!--.item-->
-
-            <div class="carousel-item">
-              <div class="section-title">
-                <div class="item-top">
-                  <div class="item text-center">
-                    <div class="imgTitle">
-                      <img src="assets/images/c2.jpg" class="img-responsive" alt="" />
-                    </div>
-                    <h6 class="mt-3">Jessey Rider</h6>
-                    <p class="">OMK Paroki Yesus Diangkat Ke Surga Madura</p>
-                    <h5>"Jangan Lupa Saksikan Penampilanku Di Leadme Season 2" </h5>
-
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <!--.item-->
-            <div class="carousel-item">
-              <div class="section-title">
-                <div class="item-top">
-                  <div class="item text-center">
-                    <div class="imgTitle">
-                      <img src="assets/images/c3.jpg" class="img-responsive" alt="" />
-                    </div>
-                    <h6 class="mt-3">Mark Stoins</h6>
-                    <p class="">Engineer</p>
-                    <h5>" Magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor " </h5>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--.item-->
-
+           
           </div>
           <!--.carousel-inner-->
         </div>
@@ -375,7 +342,7 @@
               </a>
               <div class="text-center blog-info">
                 <h3><a href="#">Gantungan Kunci LeadMe</a> </h3>
-                <p>Rp. 10.000</p>
+                <p>Rp. 15.000</p>
                 <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
               </div>
             </div>
@@ -388,7 +355,7 @@
               </a>
               <div class="text-center blog-info">
                 <h3><a href="#">Gantungan Kunci LeadMe</a> </h3>
-                <p>Rp. 10.000</p>
+                <p>Rp. 25.000</p>
                 <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
               </div>
             </div>
@@ -399,7 +366,38 @@
       </div>
     </div>
   </section>
+
+    <section class="news-1" id="cek">
+    <div class="news py-5">
+      <div class="container py-md-3">
+        <div class="heading text-center mx-auto">
+          <h3 class="head">Cek Tiket</h3>
+          <h6>Gunakan Fitur Ini Untuk Mengetahui Keaslian Tiket</h6>
+        </div>
+          <div class="aboutgrids row">
+        <div class="col-lg-12 aboutgrid2">
+          <div class="card"  style="margin-top:10px;">
+            <div class="card-body ">
+              <h5>Nomor Tiket</h5>
+              <input type="text" name="text" id="notiket" value="" style="width:100%; min-height: 50px; margin-top:5px;">
+              <button class="btn btn-success" style="width:100%;margin-top:5px;" onclick="cek2();">Cek Tiket</button>
+          </div>
+          </div>
+
+                
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
    <script type="text/javascript">
+    function cek2()
+    {
+        window.location.href = "{{url('cektiket')}}"+"/"+$('#notiket').val();
+    }
+
      function cek(a,b)
      {
         if($('#tiket'+a).val()<0){$('#tiket'+a).val(0);}

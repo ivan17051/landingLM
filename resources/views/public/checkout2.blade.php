@@ -3,7 +3,30 @@
 @section('content')
 <?php use App\Http\Controllers\LandingController; ?>
 
-  
+<div class="modal fade" id="bayar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pembayaran</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Pembayaran dapat dilakukan melalui transfer ke <b>BCA 3631574503 an Stefani Desianti P </b></h5>
+        <h6>Mohon menyertakan kode unik untuk mempermudah verifikasi</h6>
+        <h6>Verifikasi manual memerlukan waktu maksimal 24 Jam</h6>
+        <h6>Terima Kasih</h6>
+        <br>
+        <h6></h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="w3l-about1 py-5" id="about">
     <div class="container py-lg-3"> 
       <div class="aboutgrids row">
@@ -30,7 +53,7 @@
               <div class="col-4">
                 <h3>
                   @if($tr->status=='BELUM DIBAYAR')
-                  <h5 class="text-danger">Menunggu Pembayaran</h5>
+                  <h5 class="text-warning">Menunggu Pembayaran</h5>
                   <h6>Batas Pembayaran : {{date("d-m-Y H:i:s", strtotime($tr->batasBayar))}}</h6>
                   @else($tr->status =='SUDAH DIBAYAR')
                    <h5 class="text-success">Pembayaran Berhasil</h5>
@@ -54,11 +77,13 @@
               </tr>
               <tr><td><h5>Donasi Untuk Tim LEADME</h5></td><td><h5>Rp. {{number_format($donasi)}}</h5></td></tr>
               <tr><td><h5>Diskon</h5></td><td><h5>- Rp. 0</h5></td></tr>
-              <tr><td><h4>Total</h4></td><td><h4>Rp. {{number_format($total)}}</h4></td></tr>
+              <tr><td><h5>Kode Unik</h5></td><td><h5>Rp. {{number_format($tr->kodeUnik)}}</h5></td></tr>
+              <tr><td><h4>Total</h4></td><td><h4>Rp. {{number_format($tr->total)}}</h4></td></tr>
             </table>
             <br>
-            <button class="btn btn-success" style="min-height:50px; width: 100%;">Bayar Pesanan</button>
-            <a href="{{url('akun')}}"><button class="btn btn-primary" style="min-height:50px; width: 100%; margin-top: 10px;">Kembali Ke Halaman Akun</button></a>
+            <button data-toggle="modal" data-target="#bayar" class="btn btn-success" style="min-height:50px; width: 100%; margin-bottom:5px;">Bayar Pesanan (Transfer Manual)</button>
+            <button data-toggle="modal" class="btn btn-primary" disabled style="min-height:50px; width: 100%;">Bayar Pesanan (Pengecekan Otomatis) - Coming Soon</button>
+            <a href="{{url('akun')}}"><button class="btn btn-primary" style="min-height:50px; width: 100%; margin-top: 5px;">Kembali Ke Halaman Akun</button></a>
           </div>
           </div>
          

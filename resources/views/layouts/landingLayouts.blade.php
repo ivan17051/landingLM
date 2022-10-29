@@ -35,7 +35,7 @@ Author URL: http://w3layouts.com
               <a class="nav-link" href="{{url('/')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/aboutus')}}">Sinopsis</a>
+              <a class="nav-link" href="{{url('/#about')}}">Sinopsis</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url('/#jadwal')}}">Jadwal Penayangan</a>
@@ -50,7 +50,7 @@ Author URL: http://w3layouts.com
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{url('/cektiket')}}">Cek Tiket</a>
+              <a class="nav-link" href="{{url('/#cek')}}">Cek Tiket</a>
             </li>
 
             @auth
@@ -127,58 +127,34 @@ Author URL: http://w3layouts.com
       </div> -->
       <div class="container pt-5">
 
-        <div class="d-grid grid-col-4 footer-top-29">
-          <div class="footer-list-29 footer-1">
-            <h6 class="footer-title-29">About Us</h6>
+        <div class="row footer-top-29">
+
+          <div class="footer-list-29 footer-1 col-md-6">
+            <h6 class="footer-title-29">About LEADME</h6>
             <ul>
-              <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</p>
+              <p>LEADME adalah sebuah project film oleh OMK Kevikepan Surabaya Utara</p>
             </ul>
-            <div class="main-social-footer-29">
+          </div>
+
+            <div class="main-social-footer-29 footer-2 col-md-5" style="margin-top:0px !important">
               <h6 class="footer-title-29">Media Sosial</h6>
-              <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
-              <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
-              <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
-              <a href="#google-plus" class="google-plus"><span class="fa fa-google-plus"></span></a>
-              <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
+              <div class="row">
+               <a href="https://www.instagram.com/leadme_vitara/" class="instagram">
+                <span class="fa fa-instagram"></span> </a> <p class="text-white">leadme_vitara</p>
+              </div>
+              <div class="row">
+                <a href="#" class="instagram">
+                <span class="fa fa-envelope"></span> </a> <p class="text-white">pdecrew@leadmefilm.com</p>
+              </div>
+              <div class="row">
+                <a href="https://www.tokopedia.com/leadme" class="instagram">
+                <span class="fa fa-shopping-bag"></span> </a> <p class="text-white">tokopedia.com/leadme</p>
+              </div>
             </div>
-          </div>
-          <div class="footer-list-29 footer-2">
-            <ul>
-              <h6 class="footer-title-29">Useful Links</h6>
-              <li><a href="contact.html">Privacy Policy</a></li>
-              <li><a href="contact.html">Help Desk</a></li>
-              <li><a href="services.html">Projects</a></li>
-              <li><a href="contact.html">All Users</a></li>
-              <li><a href="contact.html">Support</a></li>
-            </ul>
-          </div>
-          <div class="footer-list-29 footer-3">
-            <!-- <div class="properties">
-              <h6 class="footer-title-29">Recent Projects</h6>
-              <a href="#"><img src="assets/images/g2.jpg" class="img-responsive" alt="">
-                <p>We Are Leading International Consultiing Agency</p>
-              </a>
-              <a href="#"><img src="assets/images/g8.jpg" class="img-responsive" alt="">
-                <p>Digital Marketing Agency all the foundational tools</p>
-              </a>
-              <a href="#"><img src="assets/images/g6.jpg" class="img-responsive" alt="">
-                <p>Doloremque velit sapien labore eius itna</p>
-              </a>
-            </div> -->
-          </div>
-          <div class="footer-list-29 footer-4">
-            <ul>
-              <h6 class="footer-title-29">Quick Links</h6>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="#"> Blog</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
+         
         </div>
         <div class="bottom-copies text-center">
-          <p class="copy-footer-29">© 2022 Lead Me Vitara. All rights reserved | Designed by <a
+          <p class="copy-footer-29">©2022 TIM IT LEADME Vitara. All rights reserved | Designed by <a
               href="https://w3layouts.com">W3layouts</a></p>
 
         </div>
