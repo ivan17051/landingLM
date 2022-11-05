@@ -92,7 +92,7 @@
         </div>
         <div class="col-lg-6 aboutgrid1 mt-lg-0 mt-4 pl-lg-5">
           <h4>About LeadMe</h4>
-          <h6>Durasi : TBA</h6>
+          <h6>Durasi : 97 Menit</h6>
           <p>Dera, seorang remaja yang berasal dari keluarga sederhana berlatar belakang Ras, Suku, dan Agama yang berbeda. Seiring berjalannya waktu dia merasakan panggilan untuk menjadi seorang Katolik. 
             Setelah Dera dibaptis, Jonas ketua OMK Paroki menghampiri Dera. Disini Jonas mengajak Dera untuk aktif di kegiatan Orang Muda Katolik.
           Jonas memperkenalkan Dera dengan anak omk lain seperti Gracia, Anton, Tessa, Tasya, Yohanes, Jeremy. Dera makin semangat menjadi anggota omk yang aktif dan menjadi lebih dekat dengan saudara seimannya.

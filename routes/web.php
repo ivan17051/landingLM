@@ -33,20 +33,18 @@ Route::middleware(['auth'])->middleware('admin')->group(function () {
 
     Route::get('transaksi/{id}','App\Http\Controllers\TransaksiController@show')->name('transaksi.show');
     Route::get('getPromo/{kode}ti{tiket}pa{paroki}', 'App\Http\Controllers\TransaksiController@getPromo');
-    Route::post('gettoken', 'App\Http\Controllers\TransaksiController@gettoken');
-
+    Route::post('gettoken', 'App\Http\Controllers\TransaksiController@gettoken')->name('get.token');
+    
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('akun/','App\Http\Controllers\TamuController@index')->name('tamu.akun');
     Route::post('checkout1/','App\Http\Controllers\TamuController@checkout1')->name('tamu.checkout1');
     Route::post('checkout2/','App\Http\Controllers\TamuController@checkout2')->name('tamu.checkout2');
-    
+    Route::get('tiketku','App\Http\Controllers\TiketkuController@index');
     
 });
 
 Auth::routes();
-Route::get('/welcome', function(){
-    return view('welcome');
-});
+Route::get('/welcome', 'App\Http\Controllers\TransaksiController@coba');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

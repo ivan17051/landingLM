@@ -10,7 +10,7 @@ active
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="min-height:70vh;">
     <div class="row">
       <div class="col-md-4 col-sm-6">
         <div class="card card-stats bg-warning">

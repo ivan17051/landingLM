@@ -9,6 +9,7 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main" style="height:calc(100vh - 150px) !important;">
       <ul class="navbar-nav">
+        @if(Auth::user()->hakAkses != 'guest')
         <li class="nav-item">
           <a class="nav-link @yield('dashboardStatus')" href="{{url('/dashboard')}}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -17,15 +18,7 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link @yield('penayanganStatus')" href="{{url('penayangan/all')}}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Penayangan</span>
-          </a>
-        </li>
-        @if(Auth::user()->hakAkses == 'guest')
+        @elseif(Auth::user()->hakAkses == 'guest')
         <li class="nav-item ">
           <a class="nav-link @yield('tiketkuStatus')" href="{{url('tiketku')}}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -35,6 +28,14 @@
           </a>
         </li>
         @endif
+        <li class="nav-item ">
+          <a class="nav-link @yield('penayanganStatus')" href="{{url('penayangan/all')}}">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Daftar Penayangan</span>
+          </a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link " href="../pages/billing.html">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

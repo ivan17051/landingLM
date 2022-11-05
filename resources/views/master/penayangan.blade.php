@@ -185,7 +185,7 @@ Penayangan
             <div class="col-lg-5">
               <div class="position-relative">
                 <div class="blur-shadow-image">
-                    <img class="w-100 rounded-3 shadow-lg" src="https://images.pexels.com/photos/208277/pexels-photo-208277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                    <img class="w-100 rounded-3 shadow-lg" src="http://localhost/leadme/public/assets/img/lg5.png">
                 </div>
               </div>
             </div>

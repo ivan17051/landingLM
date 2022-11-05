@@ -17,8 +17,50 @@ active
 Penayangan
 @endsection
 
+@section('style')
+@endsection
+
+@section('modal')
+<!-- Modal Pembayaran -->
+<div class="modal fade" id="modalBayar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ringkasan Belanja </h5>
+      </div>
+      <form class="form-horizontal input-margin-additional" method="POST" action="{{route('tiket.store')}}">
+        @csrf
+        <div class="modal-body">
+          <input type="hidden" id="penayangan_submit" name="penayangan_submit">
+          <input type="hidden" id="harga_submit" name="harga_submit">
+          <input type="hidden" id="nama_submit" name="nama_submit">
+          <input type="hidden" id="email_submit" name="email_submit">
+          <input type="hidden" id="nohp_submit" name="nohp_submit">
+          <table>
+            <tbody>
+              <tr>
+                <td class="text-right" style="font-weight: bold;">Total</td>
+                <td class="text-right" style="font-weight: bold;">Rp</td>
+                <td id="ringkasanTotal" style="font-weight: bold;"><td>
+              </tr>
+            </tbody>
+          </table>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary btn-sm mb-0">Pilih Pembayaran</button>
+          <button type="button" class="btn btn-secondary btn-sm mb-0" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--  End Modal Pembayaran-->
+
+@endsection
+
 @section('content')
-<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="row row-cols-1 row-cols-md-2 g-4" style="min-height:70vh;">
   
   <div class="col-md-7">
     <div class="card h-100">
@@ -90,7 +132,7 @@ Penayangan
           
           
         </div>
-        <button class="btn btn-primary w-100 mb-0">Pembayaran</button>
+        <button class="btn btn-primary w-100 mb-0" onclick="onBayar(this)" data-bs-toggle="modal" data-bs-target="#modalBayar">Lanjut</button>
       </div>
       
     </div>
@@ -116,7 +158,7 @@ Penayangan
   var total = document.getElementById("total");
   var harga = myPenayangan['harga'];
   var diskon = 0;
-  var hargaTotal = 0;
+  var hargaTotal = myPenayangan['harga'];
   var qty = 0;
   
   function editQty(tanda){
@@ -197,22 +239,19 @@ Penayangan
     alert.attr('hidden', true);
   }
 
-  //ketika klik edit
-  function onEdit(self) {
-    var key = $(self).attr('key');
-    var j = myPenayangan[key];
+  //ketika klik pembayaran
+  function onBayar(self) {
+    $modal = $('#modalBayar');
+    var user = @json(Auth::user());
     
-    $modal = $('#modalEdit');
-
-    $modal.find('[name=idpenayangan]').val(j['idpenayangan']).change();
-    $modal.find('[name=nama]').val(j['nama']).change();
-    $modal.find('[name=tanggal]').val(j['tanggal']).change();
-    $modal.find('[name=alamat]').val(j['alamat']).change();
-    $modal.find('[name=embedLink]').val(j['embedLink']).change();
-    $modal.find('[name=keterangan]').val(j['keterangan']).change();
-    $modal.find('[name=paroki]').val(j['paroki']).change().blur();
-    $modal.find('[name=penyelenggara]').val(j['penyelenggara']).change().blur();
-
+    $modal.find('[name=harga_submit]').val(hargaTotal).change();
+    document.getElementById("ringkasanTotal").innerHTML = hargaTotal;
+    $modal.find('[name=penayangan_submit]').val(myPenayangan['penayangan']).change();
+    
+    $modal.find('[name=nama_submit]').val(user['nama']).change();
+    $modal.find('[name=email_submit]').val(user['email']).change();
+    $modal.find('[name=nohp_submit]').val(user['noTelp']).change();
+    $modal.find('form').attr('action', "{{route('get.token')}}");
     // $modal.modal('show');
   }
 
@@ -229,4 +268,5 @@ Penayangan
     $('.select2').select2();
   });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/snap.js/1.9.3/snap.min.js" integrity="sha512-zTZogmNZ+Skq82/bQn/xBLkG9vtx28kh3FbLjW3sbhXy9Q9wiBXlgndpQm3X8Z9UFmFbyNRx1QkvU7lUzlXumQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection
