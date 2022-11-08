@@ -35,9 +35,9 @@ Route::middleware(['auth'])->middleware('admin')->group(function () {
 
     Route::get('transaksi/{id}','App\Http\Controllers\TransaksiController@show')->name('transaksi.show');
     Route::get('getPromo/{kode}ti{tiket}pa{paroki}', 'App\Http\Controllers\TransaksiController@getPromo');
-    Route::post('gettoken', 'App\Http\Controllers\TransaksiController@gettoken');
-
     Route::get('konfirmasi/', 'App\Http\Controllers\KonfirmasiController@index');
+
+    Route::post('gettoken', 'App\Http\Controllers\TransaksiController@gettoken')->name('get.token');
 
 });
 
@@ -47,10 +47,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('checkout2/','App\Http\Controllers\TamuController@checkout2')->name('tamu.checkout2');
     Route::get('cetakTiket/{id}','App\Http\Controllers\TamuController@cetakTiket')->name('tamu.cetakTiket');
     Route::post('verifikasi/','App\Http\Controllers\TamuController@verifikasi')->name('tamu.verifikasi');
+    //Route::get('tiketku','App\Http\Controllers\TiketkuController@index');
 });
 
 Auth::routes();
-Route::get('/welcome', function(){
-    return view('welcome');
-});
+Route::get('/welcome', 'App\Http\Controllers\TransaksiController@coba');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
