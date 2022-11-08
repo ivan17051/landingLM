@@ -44,7 +44,7 @@
               <br>
           </div>
           </div>
-          @endif
+      
           <div class="card"  style="margin-top:10px;">
             <div class="card-body ">
             <h3>Donasi Untuk Tim LEADME (Opsional)</h3><br>
@@ -52,7 +52,7 @@
               <br>
           </div>
           </div>
-          
+           @endif
           <div>
             <br>
             <h2>Total</h2>

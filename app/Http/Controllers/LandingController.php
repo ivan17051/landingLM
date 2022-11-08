@@ -18,6 +18,7 @@ class LandingController extends Controller
         foreach ($penayangan as $p)
         {
             $p->parokis = Paroki::where('idparoki',$p->paroki)->get();
+            $p->foto = Foto::where('penayangan',$p->idpenayangan)->get();
         }
         return view('public.home')->with(compact('penayangan'));
         

@@ -12,13 +12,25 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <h5>Pembayaran dapat dilakukan melalui transfer ke <b>BCA 3631574503 an Stefani Desianti P </b></h5>
-        <h6>Mohon menyertakan kode unik untuk mempermudah verifikasi</h6>
-        <h6>Verifikasi manual memerlukan waktu maksimal 24 Jam</h6>
-        <h6>Terima Kasih</h6>
+      <div class="modal-body text-center">
+        <h6>Nomor Pemesanan</h6>
+        <h3 id="ido1">ERROR</h3>
+        <h6>Jumlah Pembayaran</h6>
+        <h3 id="jp1">ERROR</h3>
+        <h5>Pembayaran dapat dilakukan melalui transfer ke <br><b>BCA 3631574503 an Stefani Desianti P </b></h5>
+        <h6>Mohon menyertakan kode unik untuk mempermudah verifikasi. Terima Kasih</h6>
         <br>
-        <h6></h6>
+        <form method="post" action="{{url('verifikasi')}}">
+          @csrf
+          <input type="hidden" name="idorder" id="ido2">
+          <h6>Tanggal Transfer</h6>
+          <input type="date" name="tgl" required style="width:100%;">
+          <h6 style="margin-top: 10px;">Nama Pemilik Rekening</h6>
+          <input type="text" name="nama" required style="width:100%;">
+          <h6 style="margin-top: 10px;">Jumlah Transfer</h6>
+          <input type="number" name="jumlah" required style="width:100%; ">
+          <input type="submit" class="btn btn-success" name="sub" value="KONFIRMASI" style="width:100%; margin-top: 5px;">
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -75,13 +87,15 @@
                 </td>
                 <td><h5>Rp. {{number_format($tiket->dibeli * $tiket->harga)}}</h5></td>
               </tr>
+              @if(1==2)
               <tr><td><h5>Donasi Untuk Tim LEADME</h5></td><td><h5>Rp. {{number_format($donasi)}}</h5></td></tr>
+              @endif
               <tr><td><h5>Diskon</h5></td><td><h5>- Rp. 0</h5></td></tr>
               <tr><td><h5>Kode Unik</h5></td><td><h5>Rp. {{number_format($tr->kodeUnik)}}</h5></td></tr>
               <tr><td><h4>Total</h4></td><td><h4>Rp. {{number_format($tr->total)}}</h4></td></tr>
             </table>
             <br>
-            <button data-toggle="modal" data-target="#bayar" class="btn btn-success" style="min-height:50px; width: 100%; margin-bottom:5px;">Bayar Pesanan (Transfer Manual)</button>
+            <button data-toggle="modal" onclick="bayars('Rp. {{number_format($tr->total)}}','{{$idtransaksi}}');" class="btn btn-success" style="min-height:50px; width: 100%; margin-bottom:5px;">Bayar Pesanan (Transfer Manual)</button>
             <button data-toggle="modal" class="btn btn-primary" disabled style="min-height:50px; width: 100%;">Bayar Pesanan (Pengecekan Otomatis) - Coming Soon</button>
             <a href="{{url('akun')}}"><button class="btn btn-primary" style="min-height:50px; width: 100%; margin-top: 5px;">Kembali Ke Halaman Akun</button></a>
           </div>
@@ -126,5 +140,13 @@
 
    </script> 
 
-  
+  <script type="text/javascript">
+  function bayars(a,b)
+  {
+    $('#ido1').text(b);
+    $('#ido2').val(b);
+    $('#jp1').text(a);
+    $('#bayar').modal('show');
+  }
+</script>
 @endsection

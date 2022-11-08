@@ -8,7 +8,7 @@ Author URL: http://w3layouts.com
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/png" href="{{asset('assets/images/lg4.png')}}">
+  <link rel="icon" type="image/png" href="{{asset('assets/img/lg4.png')}}">
   <title>Lead Me</title>
   <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
@@ -187,7 +187,7 @@ Author URL: http://w3layouts.com
     <!-- /move top -->
   </section>
   <!-- // grids block 5 -->
-  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
   <!-- //footer-28 block -->
   </section>
 
@@ -209,7 +209,7 @@ Author URL: http://w3layouts.com
 
   <!-- Smooth scrolling -->
 
-  <script src="assets/js/owl.carousel.js"></script>
+  <script src="{{asset('assets/js/owl.carousel.js')}}"></script>
 
   <!-- script for -->
   <script type="text/javascript">
@@ -251,7 +251,7 @@ Author URL: http://w3layouts.com
     })
   </script>
   <!-- //script -->
-  <script src="assets/js/smartphoto.js"></script>
+  <script src="{{asset('assets/js/smartphoto.js')}}"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const sm = new SmartPhoto(".js-img-viwer", {

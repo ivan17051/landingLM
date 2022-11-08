@@ -88,11 +88,11 @@
 
       <div class="aboutgrids row">
         <div class="col-lg-6 aboutgrid2">
-          <iframe width="100%" height="315" src="https://www.instagram.com/reel/CkNn8WGjSa4/?utm_source=ig_web_button_share_sheet" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/a76c5EtNnwM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-lg-6 aboutgrid1 mt-lg-0 mt-4 pl-lg-5">
           <h4>About LeadMe</h4>
-          <h6>Durasi : TBA</h6>
+          <h6>Durasi : 97 Menit</h6>
           <p>Dera, seorang remaja yang berasal dari keluarga sederhana berlatar belakang Ras, Suku, dan Agama yang berbeda. Seiring berjalannya waktu dia merasakan panggilan untuk menjadi seorang Katolik. 
             Setelah Dera dibaptis, Jonas ketua OMK Paroki menghampiri Dera. Disini Jonas mengajak Dera untuk aktif di kegiatan Orang Muda Katolik.
           Jonas memperkenalkan Dera dengan anak omk lain seperti Gracia, Anton, Tessa, Tasya, Yohanes, Jeremy. Dera makin semangat menjadi anggota omk yang aktif dan menjadi lebih dekat dengan saudara seimannya.
@@ -127,7 +127,7 @@
           </div>
         <div class="row pt-lg-5 mt-lg-3">
          
-            <div class="col-lg-4 col-md-6 features-with-17-right-tp_sur text-center">
+            <div class="col-lg-6 col-md-6 features-with-17-right-tp_sur text-center">
               <div class="features-with-17-left1">
                 <span class="fa fa-user s4"></span>
               </div>
@@ -136,7 +136,7 @@
                 <h5 class="text-white">Crew Dan Cast</h5>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 features-with-17-right-tp_sur text-center" >
+            <div class="col-lg-6 col-md-6 features-with-17-right-tp_sur text-center" >
               <div class="features-with-17-left1">
                 <span class="fa fa-film s5"></span>
               </div>
@@ -145,16 +145,6 @@
                 <h5 class="text-white">Lokasi Penayangan</h5>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 features-with-17-right-tp_sur text-center" >
-              <div class="features-with-17-left1">
-                <span class="fa fa-users s3"></span>
-              </div>
-              <div class="features-with-17-left2">
-                <h6>0</h6>
-                <h5 class="text-white">Orang Telah<br>Menonton LeadMe</h5>
-              </div>
-            </div>
-
          
         </div>
       </div>
@@ -165,21 +155,21 @@
       <div class="container py-md-3">
 
         <div class="heading text-center mx-auto">
-          <h3 class="head">Jadwal Penayangan</h3>
+          <h3 class="head">Jadwal Penayangan Part I</h3>
           <p class="my-3 head">November - Desember 2022</p>
         </div>
 <?php $tglsbm = ''?>        
 @foreach($penayangan as $key=>$p)
         <div>
-          @if($p->tanggal != $tglsbm)
+          @if(date('d m y',strtotime($p->tanggal)) != $tglsbm)
           <div class="row">
               <h4>{{date("l j F Y ",strtotime($p->tanggal))}}</h4>
           </div><br>
           @endif
           <?php 
-            $tglsbm = $p->tanggal;
+            $tglsbm = date('d m y',strtotime($p->tanggal));
             $plgr = LandingController::penyelenggara($p->penyelenggara);
-            $tkt = LandingController::tiket($p->penyelenggara);
+            $tkt = LandingController::tiket($p->idpenayangan);
             $foto = LandingController::foto($p->penyelenggara);
           ?>
           <div class="row">
@@ -187,7 +177,7 @@
               <div class="card-body ">
                 <div class="row">
                   <div class="col-lg-3 col-sm-12">
-                    <img style="height: 100%" class="card-img" src="{{asset('assets/img/.$foto[0]->namafile')}}">
+                    <img style="height: 100%" class="card-img" src="{{asset('assets/img/'.$p->foto[0]->namafile)}}">
                   </div>
 
                  <div class="col-lg-9 col-sm-12">
@@ -248,7 +238,11 @@
         </div>
         <br>
 @endforeach
-
+<br>
+        <div class="heading text-center mx-auto">
+          <h3 class="head">Jadwal Penayangan Part 2</h3>
+          <p class="my-3 head">Januari - Maret 2023</p>
+        </div>
       </div>
     </div>
     <!-- //features -->
@@ -312,10 +306,10 @@
           <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="blog-grid" id="zoomIn">
               <a href="#">
-                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+                <figure><img src="{{asset('assets/img/ts2.jpg')}}" class="img-fluid" alt=""></figure>
               </a>
               <div class="text-center blog-info">
-                <h3><a href="#">Kaos Leadme Desain 1</a> </h3>
+                <h3><a href="#">Kaos LEADME Desain 1</a> </h3>
                 <p>Rp. 90.000</p>
                 <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
               </div>
@@ -325,10 +319,10 @@
             <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="blog-grid" id="zoomIn">
               <a href="#">
-                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+                <figure><img src="{{asset('assets/img/tss1.jpg')}}" class="img-fluid" alt=""></figure>
               </a>
               <div class="text-center blog-info">
-                <h3><a href="#">Kaos Leadme Desain 2</a> </h3>
+                <h3><a href="#">Kaos LEADME Desain 2</a> </h3>
                 <p>Rp. 90.000</p>
                 <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
               </div>
@@ -338,10 +332,10 @@
             <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="blog-grid" id="zoomIn">
               <a href="#">
-                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+                <figure><img src="{{asset('assets/img/kc1.jpg')}}" class="img-fluid" alt=""></figure>
               </a>
               <div class="text-center blog-info">
-                <h3><a href="#">Gantungan Kunci LeadMe</a> </h3>
+                <h3><a href="#">Gantungan Kunci LEADME</a> </h3>
                 <p>Rp. 15.000</p>
                 <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
               </div>
@@ -351,15 +345,107 @@
           <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="blog-grid" id="zoomIn">
               <a href="#">
-                <figure><img src="assets/images/t5.jpg" class="img-fluid" alt=""></figure>
+                <figure><img src="{{asset('assets/img/kc2.jpg')}}" class="img-fluid" alt=""></figure>
               </a>
               <div class="text-center blog-info">
-                <h3><a href="#">Gantungan Kunci LeadMe</a> </h3>
+                <h3><a href="#">Gantungan Kunci LEADME</a> </h3>
                 <p>Rp. 25.000</p>
                 <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
               </div>
             </div>
           </div>
+
+           <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="{{asset('assets/img/st1.jpg')}}" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Sticker LEADME 1</a> </h3>
+                <p>Rp. 25.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="{{asset('assets/img/st2.jpg')}}" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Sticker LEADME 2</a> </h3>
+                <p>Rp. 8.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="{{asset('assets/img/st3.jpg')}}" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Sticker LEADME 3</a> </h3>
+                <p>Rp. 10.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="{{asset('assets/img/tt1.jpg')}}" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Tote Bag LEADME 1</a> </h3>
+                <p>Rp. 35.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="{{asset('assets/img/tb2.jpg')}}" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Tote Bag LEADME 2</a> </h3>
+                <p>Rp. 3.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
+              </div>
+            </div>
+          </div>
+
+           <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="{{asset('assets/img/mg.jpg')}}" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">Mug LEADME</a> </h3>
+                <p>Rp. 25.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="blog-grid" id="zoomIn">
+              <a href="#">
+                <figure><img src="{{asset('assets/img/sk.jpg')}}" class="img-fluid" alt=""></figure>
+              </a>
+              <div class="text-center blog-info">
+                <h3><a href="#">LEADME Stationary Kit</a> </h3>
+                <p>Rp. 17.000</p>
+                <a href="https://Tokopedia.com/leadme" target="blank"><button class="btn btn-success" style=" width: 100%;">Dapatkan Di Tokopedia</button></a>
+              </div>
+            </div>
+          </div>
+
        
         </div>
         </div>
