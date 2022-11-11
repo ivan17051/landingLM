@@ -32,7 +32,7 @@ class LoginController extends Controller
         $role = Auth::user()->hakAkses;
         switch($role){
             case 'guest':
-                return '/tiketku';
+                return '/akun';
                 break;
             default:
                 return RouteServiceProvider::HOME;
@@ -45,13 +45,13 @@ class LoginController extends Controller
      *
      * @return void
      */
-    // protected function redirectTo()
-    // {
-    //     if (auth()->user()->hakAkses == 'guest') {
-    //         return '/akun';
-    //     }
-    //     return '/dashboard';
-    // }
+    /*protected function redirectTo()
+    {
+         if (auth()->user()->hakAkses == 'guest') {
+             return '/akun';
+         }
+         return '/dashboard';
+    }*/
 
     public function __construct()
     {

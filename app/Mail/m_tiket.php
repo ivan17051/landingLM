@@ -18,7 +18,9 @@ class m_tiket extends Mailable
      */
     public function __construct($penerima,$tiket,$pesanan)
     {
-        $this->pesan = $pesan;
+        $this->penerima = $penerima;
+        $this->tiket = $tiket;
+        $this->pesanan = $pesanan;
     }
 
     /**
@@ -28,8 +30,10 @@ class m_tiket extends Mailable
      */
     public function build()
     {
-        $pesan = $this->pesan;
-        return $this->from(env('MAIL_USERNAME','LEADME FILM'))->subject('TIKET LEADME')->view('mail.tiket',compact('pesan')); 
+        $penerima = $this->penerima;
+        $tiket = $this->tiket ;
+        $pesanan = $this->pesanan ;
+        return $this->from(env('MAIL_USERNAME','LEADME FILM'))->subject('TIKET LEADME')->view('mail.tiket',compact('penerima','tiket','pesanan')); 
     }
 }
 

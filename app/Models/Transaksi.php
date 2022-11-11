@@ -10,6 +10,8 @@ class Transaksi extends Model
     use HasFactory;
     protected $table = 'transaksi';
     public $primaryKey = 'idtransaksi';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     public $timestamps = false;
 

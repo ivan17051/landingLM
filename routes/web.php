@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('akun/','App\Http\Controllers\TamuController@index')->name('tamu.akun');
     Route::post('checkout1/','App\Http\Controllers\TamuController@checkout1')->name('tamu.checkout1');
     Route::post('checkout2/','App\Http\Controllers\TamuController@checkout2')->name('tamu.checkout2');
+    Route::get('orderFinal/{id}','App\Http\Controllers\TamuController@checkout3')->name('tamu.order');
     Route::get('cetakTiket/{id}','App\Http\Controllers\TamuController@cetakTiket')->name('tamu.cetakTiket');
     Route::post('verifikasi/','App\Http\Controllers\TamuController@verifikasi')->name('tamu.verifikasi');
     //Route::get('tiketku','App\Http\Controllers\TiketkuController@index');

@@ -113,7 +113,7 @@ a[x-apple-data-detectors] {
                   <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr>
-                      <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Pembelian Tiket Telah Berhasil Dan Tiket Anda Telah Terbit</p></td>
+                      <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Pembelian Tiket Telah Berhasil Dan Tiket Anda Telah Terbit<br>Tukarkan E-Tiket Dengan Tiket Fisik Edisi Koleksi Di Lokasi Penayangan*</p></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -132,7 +132,7 @@ a[x-apple-data-detectors] {
                           <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><b>Tiket {{$pesanan->namaTiket}}</b></p></td>
                          </tr>
                          <tr>
-                          <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">{{date('l M Y h:i',strtotime($pesanan->tanggal))}}<br>{{$pesanan->nama}}<br>{{$pesanan->namaParoki}}<br>{{$pesanan->alamat}}</p></td>
+                          <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">{{date('l M Y H:i',strtotime($pesanan->tanggal))}}<br>{{$pesanan->nama}}<br>{{$pesanan->namaParoki}}<br>{{$pesanan->alamat}}</p></td>
                          </tr>
                        </table></td>
                      </tr>
@@ -252,7 +252,7 @@ a[x-apple-data-detectors] {
                   <td class="es-m-p0r" align="center" style="padding:0;Margin:0;width:560px">
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr>
-                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Pemesan: <strong>{{$penerima->nama.' | '.$penerima->email}}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Nomor Pesanan :&nbsp;<strong>#{{$pesanan->idtransaksi}}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Tanggal Pesan:&nbsp;<strong>{{date('d M Y h:i:s',strtotime($pesanan->tanggalWaktu))}}</strong></p></td>
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Pemesan: <strong>{{$penerima->nama.' | '.$penerima->email}}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Nomor Pesanan :&nbsp;<strong>#{{$pesanan->idtransaksi}}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Tanggal Pesan:&nbsp;<strong>{{date('d M Y H:i:s',strtotime($pesanan->tanggalWaktu))}}</strong></p></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -273,10 +273,10 @@ a[x-apple-data-detectors] {
 	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="https://leadmefilm.com" 
                 style="height:44px; v-text-anchor:middle; width:252px" arcsize="11%" stroke="f"  fillcolor="#59bfe4">
 		<w:anchorlock></w:anchorlock>
-		<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:18px; font-weight:400; line-height:18px;  mso-text-raise:1px'>Tiket {{$k}} #{{$t->tiketiOnline}}</center>
+		<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:18px; font-weight:400; line-height:18px;  mso-text-raise:1px'>Tiket {{$k+1}} #{{$t->tiketOnline}}</center>
 	</v:roundrect></a>
 <![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#2CB543;background:#59bfe4;border-width:0px;display:inline-block;border-radius:5px;width:auto;mso-hide:all">
-  <a href="{{url('cetakTiket/'.$t->idtiketFinal)}}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;border-style:solid;border-color:#59bfe4;border-width:10px 30px 10px 30px;display:inline-block;background:#59bfe4;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:24px;width:auto;text-align:center">Tiket {{$k}} #{{$t->tiketiOnline}}</a></span><!--<![endif]--></td>
+  <a href="{{url('cetakTiket/'.$t->idtiketFinal)}}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;border-style:solid;border-color:#59bfe4;border-width:10px 30px 10px 30px;display:inline-block;background:#59bfe4;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:24px;width:auto;text-align:center">Tiket {{$k+1}} #{{$t->tiketOnline}}</a></span><!--<![endif]--></td>
                      </tr>
                      <tr style="height:10px;"></tr>
 @endforeach

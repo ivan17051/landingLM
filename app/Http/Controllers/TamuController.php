@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Elibyy\TCPDF\Facades\TCPDF;
 use App\Mail\konfirmasi;
+use App\Mail\m_tiket;
 use HTTP_Request2;
 use Illuminate\Support\Facades\Mail;
 use Redirect;
@@ -36,15 +37,16 @@ class TamuController extends Controller
             $p->tiket = $tiket2;
             $p->parokis = Paroki::where('idparoki',$p->paroki)->get();
         }
-       
+      
         foreach ($pesanan as $p)
         {
-            //echo 'https://api-stg.oyindonesia.com/api/payment-checkout/status?partner_tx_id='.$p->paymentLinkId.'&send_callback=false';
-            $tiket = Tiket::where('idtiket',$p->tiket)->get(); 
-            if($p->metode == 'ONLINE' && $p->status =='BELUM DIBAYARa')
+            
+           // echo 'https://api-stg.oyindonesia.com/api/payment-checkout/status?partner_tx_id='.(string)$p->idtransaksi.'&send_callback=false';
+            $tiket = $tiket = Tiket::findOrFail($p->tiket);
+            if($p->metode == 'ONLINE' && $p->status =='BELUM DIBAYAR')
             {
                 $rq = new HTTP_Request2();
-                $rq->setUrl('https://api-stg.oyindonesia.com/api/payment-checkout/status?partner_tx_id='.$p->paymentLinkId.'&send_callback=false');
+                $rq->setUrl('https://partner.oyindonesia.com/api/payment-checkout/status?partner_tx_id='.$p->idtransaksi.'&send_callback=false');
                 $rq->setMethod(HTTP_Request2::METHOD_GET);
                 $rq->setConfig(array(
                 'follow_redirects' => TRUE
@@ -52,18 +54,18 @@ class TamuController extends Controller
                 $rq->setHeader(array(
                 'Content-Type' => 'application/json',
                 'x-oy-username' => 'rmivani',
-                'x-api-key' => '85f84a47-2276-44b5-afe3-bfedc89286cf'
+                'x-api-key' => '3d8153aa-afeb-47f0-9592-7e3cc92a339b'
                 ));
                
                 try {
                 $response = $rq->send();
                 if ($response->getStatus() == 200) {
                      $json = json_decode($response->getBody(), TRUE); 
-                     if($json['status']== 'complete')
+                     if($json['data']['status']== 'complete')
                      {
-                         $p->status == 'SUDAH DIBAYAR';
-                         $p->waktuBayar = date('d m Y h:i:s',strtotime($json['updated']));
-                        // $p->save();
+                         $p->status = 'SUDAH DIBAYAR';
+                         $p->waktuBayar = date('Y-m-d H:i:s',strtotime($json['data']['updated']));
+                         $p->save();
      
                          for ($i=0; $i < $p->jumlah ; $i++) { 
                              $tk = new TiketFinal();
@@ -78,13 +80,28 @@ class TamuController extends Controller
                              $tk-> noTelp = auth()->user()->noTelp;
                              $tk-> paroki = auth()->user()->paroki;
                              $tk-> status = 'Pembelian Online';
-                            // $tk->save();
+                             $tk->save();
                          }
+
+                         $tiket->terjual = $tiket->terjual+$p->jumlah;
+                         $tiket->pending = $tiket->pending - $p->jumlah;
+                         $tiket->save();
+
+                        $penerima2 = auth()->user(); $json;
+                        $penerima2->parokis = Paroki::where('idparoki',$penerima2->paroki)->get();
+                        $pesanan2 = DB::select('select *, tr.jumlah as pj from transaksi tr inner join tiket t on tr.tiket = t.idtiket inner join penayangan p on t.penayangan = p.idpenayangan inner join paroki pa on p.paroki = pa.idparoki where tr.idtransaksi ="'.$p->idtransaksi.'" ');
+                        $pesanan2 = $pesanan2[0];
+                        $tiket2 =DB::select('select * from tiketfinal  where transaksi = "'.$p->idtransaksi.'" ');
+
+                        Mail::to('21stefsk@gmail.com')->send(new m_tiket($penerima2, $tiket2, $pesanan2));
                      }
-                     else if ($json['status']== 'closed' || $json['status']== 'failed')
+                     else if ($json['data']['status']== 'closed' || $json['data']['status']== 'failed' || $json['data']['status']== 'expired')
                      {
-                         $p->status == 'BATAL';
+                         $p->status = 'BATAL';
                          $p->save();
+                         $tiket->pending = $tiket->pending - $p->jumlah;
+                         $tiket->save();
+
                      }
                 }
                 else {
@@ -95,14 +112,12 @@ class TamuController extends Controller
                 catch(HTTP_Request2_Exception $e) {
                 echo 'Error: ' . $e->getMessage();
                 }
-                dd($rq);
             }
 
-            foreach ($tiket as $t)
-            {
-                $penayangan = Penayangan::where('idpenayangan',$t->penayangan)->get();
-                $t->penayangan = $penayangan;
-            }
+           
+            $penayangan = Penayangan::where('idpenayangan',$tiket->penayangan)->get();
+            $tiket->penayangan = $penayangan;
+            
             $p->tikets = $tiket;
         }
         return view('public.akun')->with(compact('users','pesanan','penayangan2','verifikasi'));
@@ -140,7 +155,7 @@ class TamuController extends Controller
             $res = '';
             $tiket = Tiket::findOrFail($request->tiket);
             $jumlah = $request->jumlah;
-            $donasi = 0;//$request->donasi;
+            $donasi = $request->donasi;
             $total = $tiket->harga * $jumlah + $donasi;
             //$promo = $request->promo;
 
@@ -172,7 +187,7 @@ class TamuController extends Controller
             
 
             $rq = new HTTP_Request2();
-            $rq->setUrl('https://api-stg.oyindonesia.com/api/payment-checkout/create-v2');
+            $rq->setUrl('https://partner.oyindonesia.com/api/payment-checkout/create-v2');
             $rq->setMethod(HTTP_Request2::METHOD_POST);
             $rq->setConfig(array(
             'follow_redirects' => TRUE
@@ -180,16 +195,16 @@ class TamuController extends Controller
             $rq->setHeader(array(
             'Content-Type' => 'application/json',
             'x-oy-username' => 'rmivani',
-            'x-api-key' => '85f84a47-2276-44b5-afe3-bfedc89286cf'
+            'x-api-key' => '3d8153aa-afeb-47f0-9592-7e3cc92a339b'
             ));
             $rq->setBody('{    
                 "description": "'.$idtransaksi.'",    
                 "partner_tx_id": "'.$idtransaksi.'",  
                 "notes": "", 
-                "sender_name" : "Mochamad Suryono",     
+                "sender_name" : "'.auth()->user()->nama.'",     
                 "amount" : '.$tr->total.',   
-                "email": "",    
-                "phone_number": "",     
+                "email": "'.auth()->user()->email.'",    
+                "phone_number": "'.auth()->user()->noTelp.'",     
                 "is_open" : false,
                 "include_admin_fee" : true,    
                 "expiration": "'.$tr->batasBayar.'"
@@ -211,7 +226,26 @@ class TamuController extends Controller
             }
             $tr->paymentLinkId = $json['payment_link_id'];
             $tr->save();
-            return redirect('/akun/#tr'.$idtransaksi)->withErrors(['msg' => 'Pemesanan Berhasil, Silahkan Melakukan Pembayaran']);;
+
+
+            return redirect('orderFinal/'.$idtransaksi);
+        }
+    }
+
+    public function checkout3($id){
+        if(!Auth::check())
+        {
+            return Redirect::back()->withErrors(['msg' => 'Silahkan Login Terlebih Dahulu']);
+        }
+        else{
+            $users = auth()->user();
+            $users->parokis = Paroki::where('idparoki',$users->paroki)->get();
+            $tr = Transaksi::findOrFail($id);
+            if($tr == null){ return redirect('akun')->withErrors(['msg' => 'Pesanan Tidak Ditemukan']); }
+            $tiket = Tiket::findOrFail($tr->tiket);
+            $penayangan = Penayangan::findOrFail($tiket->penayangan)->get();
+            $tiket->penayangan = $penayangan[0];
+            return view('public.checkout2')->with(compact('tiket','users','tr'));
         }
     }
 
@@ -306,82 +340,23 @@ class TamuController extends Controller
     }
 
     public function pay(Request $request)
-    {
-        /*
-        $rq = new HTTP_Request2();
-        $rq->setUrl('https://api-stg.oyindonesia.com/api/payment-checkout/status?partner_tx_id=07112022172751&send_callback=false');
-        $rq->setMethod(HTTP_Request2::METHOD_GET);
-        $rq->setConfig(array(
-        'follow_redirects' => TRUE
-        ));
-        $rq->setHeader(array(
-        'Content-Type' => 'application/json',
-        'x-oy-username' => 'rmivani',
-        'x-api-key' => '85f84a47-2276-44b5-afe3-bfedc89286cf'
-        ));
-        try {
-        $response = $rq->send();
-        if ($response->getStatus() == 200) {
-             $json = json_decode($response->getBody(), TRUE); 
-        }
-        else {
-            echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
-            $response->getReasonPhrase();
-        }
-        }
-        catch(HTTP_Request2_Exception $e) {
-        echo 'Error: ' . $e->getMessage();
-        */
-       // dd($json);
-/*
-        $rq = new HTTP_Request2();
-        $rq->setUrl('https://api-stg.oyindonesia.com/api/payment-checkout/status');
-        $rq->setMethod(HTTP_Request2::METHOD_POST);
-        $rq->setConfig(array(
-        'follow_redirects' => TRUE
-        ));
-        $rq->setHeader(array(
-        'Content-Type' => 'application/json',
-        'x-oy-username' => 'rmivani',
-        'x-api-key' => '85f84a47-2276-44b5-afe3-bfedc89286cf'
-        ));
-        $rq->setBody('{    
-            "partner_tx_id	": "07112022172751",    
-            "send_callback": false"
-        }');
-        $json;
-        try {
-        //dd($rq);
-        $response = $rq->send();
-        if ($response->getStatus() == 200) {
-            echo $json = json_decode($response->getBody(), TRUE); 
-        }
-        else {
-            echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
-            $response->getReasonPhrase();
-        }
-        }
-        catch(HTTP_Request2_Exception $e) {
-        echo 'Error: ' . $e->getMessage();
-        }
-        */
-
-        //dd($request->amount);
-        //$json = json_decode($request->getBody(), TRUE); 
-       // echo 'insert into simpan (simpan) values(\''.$response->getBody().'\')';
-        $json = json_decode($request, TRUE); 
+    {  
+        
+       //$json = json_decode($request->json()); 
+      // dd($request->all()['data']['status']);
         //dd($request->status);
-        DB::insert('insert into simpan (simpan) values(\''.$request->status.'\')');
-       // echo $json;
+        DB::insert('insert into simpan (simpan) values(\''. $request->all()['data']['partner_tx_id'].'|'.$request->all()['data']['status'].'\')');
+        echo $request->all()['data']['status'];
     }
 
     public function email()
     {
         $penerima = auth()->user(); $json;
         $penerima->parokis = Paroki::where('idparoki',$penerima->paroki)->get();
-        $pesanan = DB::select('select *, tr.jumlah as pj from transaksi tr inner join tiket t on tr.tiket = t.idtiket inner join penayangan p on t.penayangan = p.idpenayangan inner join paroki pa on p.paroki = pa.idparoki where tr.idtransaksi ="'.'07112022172751'.'" ');
+        $pesanan = DB::select('select *, tr.jumlah as pj from transaksi tr inner join tiket t on tr.tiket = t.idtiket inner join penayangan p on t.penayangan = p.idpenayangan inner join paroki pa on p.paroki = pa.idparoki where tr.idtransaksi ="'.'09112022142024'.'" ');
         $pesanan = $pesanan[0];
-        $tiket =DB::select('select * from tiketfinal  where transaksi = "'.'07112022172751'.'" ');
+        $tiket =DB::select('select * from tiketfinal  where transaksi = "'.'09112022142024'.'" ');
+        Mail::to('21stefsk@gmail.com')->send(new m_tiket($penerima, $tiket, $pesanan));
 
         return view('mail.tiket')->with(compact('penerima','pesanan','tiket'));
     }

@@ -87,6 +87,7 @@
                   <h5>@if($t->tiketOffline != '') {{$t->tiketOffline}} ({{$t->warna}}) @else - @endif</h5>
                   <h6 style="margin-top:5px;">Status Tiket</h6>
                   <h5>@if($t->tanggalKehadiran != '') Tiket Telah Digunakan Pada {{date('d M Y H:i:s', strtotime($t->tanggalKehadiran))}} @else Tiket Belum Digunakan @endif</h5>
+                  <h6 style="margin-top:10px;">Tukarkan E-Tiket Dengan Tiket Fisik Edisi Koleksi Di Lokasi Penayangan*</h6>
                   <a href="{{url('cetakTiket/'.$t->idtiketFinal)}}" target="blank" class="btn btn-success" style="margin-top: 5px;">Download Tiket</a>
               </div>
             </div>
@@ -98,7 +99,7 @@
     </div>
     
 @endforeach
-
+@if(1==2)
 <h1 style="margin-top:20px; margin-bottom: 10px;">Verifikasi Pembayaran</h1>
 <div class="card"  style="margin-top:10px;">
 <div class="card-body ">
@@ -124,7 +125,7 @@
 @endforeach
 </div>
 </div></div>
-
+@endif
 <h1 id="myps" style="margin-top:20px; margin-bottom: 10px;">Pesanan Saya</h1>
  <div class="card"  style="margin-top:10px;">
       <div class="card-body ">
@@ -147,13 +148,32 @@
 
     <div id="tr{{$p->idtransaksi}}" class="collapse @if($key==0)show @endif" aria-labelledby="tr1{{$p->idtransaksi}}" data-parent="#accordion2">
       <div class="card-body">
+         <div class="row">
+              <div class="col-8">
+                <h3>Pesanan</h3>
+                <h3>{{$p->idtransaksi}}</h3>
+              </div>
+              <div class="col-4">
+                <h3>
+                  @if($p->status=='BELUM DIBAYAR')
+                  <h5 class="text-warning">Menunggu Pembayaran</h5>
+                  <h6>Batas Pembayaran : {{date("d-m-Y H:i:s", strtotime($p->batasBayar))}}</h6>
+                  @else($p->status =='SUDAH DIBAYAR')
+                   <h5 class="text-success">Pembayaran Berhasil</h5>
+                   <h6>Pembayaran : {{date("d-m-Y H:i:s", strtotime($p->waktuBayar))}}</h6>
+                  @endif
+                </h3>
+              </div>
+            </div>
+         <br>
         <table class="table table-bordered">
+          
               <tr>
                 <td>
-                  <h4>{{$p->tikets[0]->namaTiket}}</h4>
-                  <h5>{{$p->tikets[0]->penayangan[0]->nama}}</h5>
-                  <h5>{{date("l j F Y H:i",strtotime($p->tikets[0]->penayangan[0]->tanggal))}}</h5>
-                  <h5>{{$p->tikets[0]->penayangan[0]->deskripsi}}</h5>
+                  <h4>{{$p->tikets->namaTiket}}</h4>
+                  <h5>{{$p->tikets->penayangan[0]->nama}}</h5>
+                  <h5>{{date("l j F Y H:i",strtotime($p->tikets->penayangan[0]->tanggal))}}</h5>
+                  <h5>{{$p->tikets->penayangan[0]->deskripsi}}</h5>
                     <h5>{{$p->jumlah.' X Rp. '.number_format($p->harga)}}</h5>
                 </td>
                 <td><h5>Rp. {{number_format($p->jumlah * $p->harga)}}</h5></td>
@@ -162,12 +182,6 @@
               <tr><td><h5>Diskon</h5></td><td><h5>- Rp. {{number_format($p->diskon)}}</h5></td></tr>
               <tr><td><h5>Kode Unik</h5></td><td><h5>Rp. {{number_format($p->kodeUnik)}}</h5></td></tr>
               <tr><td><h4>Total</h4></td><td><h4>Rp. {{number_format($p->total)}}</h4></td></tr>
-              @if($p->status=='BELUM DIBAYAR')
-              <tr><td><h5>Batas Waktu Pembayaran</h5></td><td><h5>{{date('d M Y h:i:s',strtotime($p->batasBayar))}}</h5></td></tr>
-              @endif
-              @if($p->status=='SUDAH DIBAYAR')
-              <tr><td><h5>Waktu Pembayaran</h5></td><td><h5>{{date('d M Y h:i:s',strtotime($p->waktuBayar))}}</h5></td></tr>
-              @endif
             </table>
             <br>
             @if($p->status=='BELUM DIBAYAR')
@@ -182,14 +196,15 @@
                   <div class="modal-header text-center">
                     <div>
                     <h5>Pembayaran</h5>
-                    <h6>Refresh Halaman Ini Setelah Melakukan Pembayaran</h6>
+                   <h6>Klik Tombol Di Bawah Ini Setelah Berhasil Melakukan Pembayaran</h6>
+                    <a href="{{url('akun')}}"><button class="btn btn-primary" style="width:100%">Saya Telah Melakukan Pembayaran</button></a>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body text-center" id="obpay" style="height: 800px;">
-                      <object data="https://pay-stg.oyindonesia.com/{{$p->paymentLinkId}}" width="100%" height="95%"></object>
+                      <object data="https://partner.oyindonesia.com/{{$p->paymentLinkId}}" width="100%" height="95%"></object>
                   </div>
                 </div>
               </div>

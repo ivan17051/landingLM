@@ -34,13 +34,14 @@
             <h5>{{$tiket->dibeli.' X Rp. '.number_format($tiket->harga)}}</h5>
           </div>
           </div>
-          @if(1==2)
            <div class="card"  style="margin-top:10px;">
             <div class="card-body ">
             <h3>Kode Promo</h3><br>
-            <input id="promo" type="text" name="promo" class="form-control">
+            <input id="promo" type="text" class="form-control">
             <button class="btn btn-warning" style="margin-top: 5px; margin-bottom: 10px;">Apply Promo Code</button>
+            @if(1==2)
             <h3 class="text-danger">LEADME123 <br>- Rp. 20000</h3>
+            @endif
               <br>
           </div>
           </div>
@@ -52,7 +53,6 @@
               <br>
           </div>
           </div>
-           @endif
           <div>
             <br>
             <h2>Total</h2>
@@ -82,10 +82,10 @@
      function set0()
      {
         if($('#donasi').val()<0){$('#donasi').val(0);}
-        if($('#donasi').val()>0)
+        if($('#donasi').val()>=0)
         {
           $('#total').text();
-          $('#total').text(addCommas(parseInt(harga)+parseInt($('#donasi').val())));
+          $('#total').text('Rp. '+addCommas(parseInt(harga)+parseInt($('#donasi').val())));
           $('#total2').val(parseInt(harga)+parseInt($('#donasi').val()));
           $('#donasi2').val($('#donasi').val());
 
